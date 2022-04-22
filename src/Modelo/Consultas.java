@@ -18,7 +18,6 @@ import java.sql.Statement;
  * @author 34684
  */
 public class Consultas{
-    Conexion cn = new Conexion();
    
     
 
@@ -26,17 +25,17 @@ public class Consultas{
         
     }
     public boolean ejecutarInsertDeleteUpdate (String consulta) throws SQLException{
-        cn.getConexion();    
+        Conexion.getConexion();
         try{
             Statement st;
-            st = cn.createdStatement();
+            st = Conexion.createdStatement();
             int filas = st.executeUpdate(consulta);
             return true;
         }catch(SQLException e){
             System.err.println(e);
             return false;
         }finally{
-                cn.desconectar();
+                Conexion.desconectar();
     }
     }
 }

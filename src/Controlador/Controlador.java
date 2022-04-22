@@ -13,12 +13,12 @@ import java.sql.SQLException;
  * @author 34684
  */
 public class Controlador {
-    private Conexion cn = new Conexion();
+    
     public void conectar() throws SQLException{
-       cn.getConexion();
+       Conexion.getConexion();
         
     }
     public void desconectar(){
-        cn.desconectar();
+        Conexion.desconectar();
     }
 }

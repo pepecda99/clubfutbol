@@ -15,15 +15,15 @@ import java.sql.Statement;
  * @author 34684
  */
 public class Conexion {
-    private final String bd= "clubfutbol";
-    private final String usuario = "root";
-    private final String contraseña= "";
-    private final String url = "jdbc:mysql://localhost/" + bd;
-    private Connection cn=null;
+    private static final String bd= "clubfutbol";
+    private static final String usuario = "root";
+    private static final String contraseña= "";
+    private static final String url = "jdbc:mysql://localhost/" + bd;
+    private static Connection cn=null;
 
-    public Connection getConexion() throws SQLException{
+    public static Connection getConexion() throws SQLException{
         try{
-            cn= DriverManager.getConnection(this.url, this.usuario, this.contraseña);
+            cn= DriverManager.getConnection(url, usuario, contraseña);
             System.out.println("Se ha conectado");
         }catch(SQLException e){
             System.out.println(e);
@@ -34,7 +34,7 @@ public class Conexion {
 
         }
 
-    public Connection desconectar(){
+    public static Connection desconectar(){
         try{
             cn.close();
         }catch(SQLException e){
@@ -42,7 +42,7 @@ public class Conexion {
         }
         return cn;
     }
-    public Statement createdStatement() throws SQLException{
+    public static Statement createdStatement() throws SQLException{
         Statement st = null;
         try{
             st=cn.createStatement();
