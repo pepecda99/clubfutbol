@@ -16,6 +16,7 @@ import java.util.logging.Logger;
  */
 public class Vista extends javax.swing.JFrame {
     private Controlador cn= new Controlador();
+    private Consultarpartidos conspar;
     /**
      * Creates new form Vista
      */
@@ -35,20 +36,57 @@ public class Vista extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jEliminar = new javax.swing.JButton();
+        jInsertaryactualizar = new javax.swing.JButton();
+        jConsultarPartidos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
+        jEliminar.setText("Eliminar");
+        jEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jEliminarActionPerformed(evt);
+            }
+        });
+
+        jInsertaryactualizar.setText("Insertar y actualizar");
+        jInsertaryactualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jInsertaryactualizarActionPerformed(evt);
+            }
+        });
+
+        jConsultarPartidos.setText("Consultar partidos");
+        jConsultarPartidos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jConsultarPartidosActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 985, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(171, 171, 171)
+                .addComponent(jInsertaryactualizar)
+                .addGap(135, 135, 135)
+                .addComponent(jEliminar)
+                .addGap(165, 165, 165)
+                .addComponent(jConsultarPartidos)
+                .addContainerGap(195, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 663, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(297, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jEliminar)
+                    .addComponent(jInsertaryactualizar)
+                    .addComponent(jConsultarPartidos))
+                .addGap(343, 343, 343))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -64,6 +102,19 @@ public class Vista extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEliminarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jEliminarActionPerformed
+
+    private void jInsertaryactualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jInsertaryactualizarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jInsertaryactualizarActionPerformed
+
+    private void jConsultarPartidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jConsultarPartidosActionPerformed
+        conspar= new Consultarpartidos();
+        conspar.setVisible(true);
+    }//GEN-LAST:event_jConsultarPartidosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -105,6 +156,9 @@ public class Vista extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jConsultarPartidos;
+    private javax.swing.JButton jEliminar;
+    private javax.swing.JButton jInsertaryactualizar;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
