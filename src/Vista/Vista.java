@@ -24,7 +24,7 @@ public class Vista extends javax.swing.JFrame {
      */
     public Vista() throws SQLException {
         initComponents();
-        cn.conectar();
+        
         
     }
 
@@ -116,7 +116,11 @@ public class Vista extends javax.swing.JFrame {
     }//GEN-LAST:event_jInsertaryactualizarActionPerformed
 
     private void jConsultarPartidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jConsultarPartidosActionPerformed
-        conspar= new Consultarpartidos();
+        try {
+            conspar= new Consultarpartidos();
+        } catch (SQLException ex) {
+            Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
+        }
         conspar.setVisible(true);
     }//GEN-LAST:event_jConsultarPartidosActionPerformed
 

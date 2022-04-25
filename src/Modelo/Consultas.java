@@ -24,16 +24,16 @@ public class Consultas{
     public Consultas() throws SQLException {
         
     }
-    public boolean ejecutarInsertDeleteUpdate (String consulta) throws SQLException{
+    public void ejecutarInsertDeleteUpdate (String consulta) throws SQLException{
         Conexion.getConexion();
         try{
             Statement st;
             st = Conexion.createdStatement();
             int filas = st.executeUpdate(consulta);
-            return true;
+            System.out.println("Consulta realizada");
         }catch(SQLException e){
             System.err.println(e);
-            return false;
+            System.out.println("Consulta fallida");
         }finally{
                 Conexion.desconectar();
     }

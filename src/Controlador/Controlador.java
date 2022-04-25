@@ -6,6 +6,7 @@
 package Controlador;
 
 import Modelo.Conexion;
+import Modelo.Consultas;
 import java.sql.SQLException;
 
 /**
@@ -13,6 +14,7 @@ import java.sql.SQLException;
  * @author 34684
  */
 public class Controlador {
+    Consultas consultas;
     
     public void conectar() throws SQLException{
        Conexion.getConexion();
@@ -20,5 +22,8 @@ public class Controlador {
     }
     public void desconectar(){
         Conexion.desconectar();
+    }
+    public void consultas(String consulta) throws SQLException{
+        consultas.ejecutarInsertDeleteUpdate(consulta);
     }
 }

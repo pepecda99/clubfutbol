@@ -19,6 +19,7 @@ public class Partido {
     private int codigo_del_partido;
     private Equipo e1;
     private Equipo e2;
+    
 
     public Partido(Date fecha_del_partido, int goles_en_casa, int goloes_visita, int codigo_del_partido, int codigo_equipo1, int codigo_equipo2) {
         this.fecha_del_partido = fecha_del_partido;
@@ -27,6 +28,25 @@ public class Partido {
         this.codigo_del_partido = codigo_del_partido;
         codigo_equipo1=e1.getCodigo_equipo();
         codigo_equipo2=e2.getCodigo_equipo();
+    }
+    public Partido(){
+        
+    }
+
+    public int getE1() {
+        return e1.getCodigo_equipo();
+    }
+
+    public void setE1(int e1) {
+        this.e1.setCodigo_equipo(e1);
+    }
+
+    public int getE2() {
+        return e2.getCodigo_equipo();
+    }
+
+    public void setE2(int e2) {
+        this.e1.setCodigo_equipo(e2);
     }
 
     public Date getFecha_del_partido() {

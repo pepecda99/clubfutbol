@@ -5,17 +5,23 @@
  */
 package Vista;
 
+import Controlador.TableControlador;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author MEDAC
  */
 public class Consultarpartidos extends javax.swing.JFrame {
-
+    private TableControlador tb = new TableControlador();
     /**
      * Creates new form Consultarparidos
      */
-    public Consultarpartidos() {
+    public Consultarpartidos() throws SQLException {
         initComponents();
+        
     }
 
     /**
@@ -37,24 +43,8 @@ public class Consultarpartidos extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Equipo Local", "Goles Local", "Goles Visitante", "Equipo Visitante"
-            }
-        ));
+        jTable1.setModel(tb);
         jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setHeaderValue("Equipo Local");
-            jTable1.getColumnModel().getColumn(1).setHeaderValue("Goles Local");
-            jTable1.getColumnModel().getColumn(2).setHeaderValue("Goles Visitante");
-            jTable1.getColumnModel().getColumn(3).setHeaderValue("Equipo Visitante");
-        }
 
         jSmes.setModel(new javax.swing.SpinnerNumberModel(1, 1, 12, 1));
 
@@ -138,7 +128,11 @@ public class Consultarpartidos extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Consultarpartidos().setVisible(true);
+                try {
+                    new Consultarpartidos().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Consultarpartidos.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
