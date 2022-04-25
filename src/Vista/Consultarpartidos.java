@@ -35,8 +35,6 @@ public class Consultarpartidos extends javax.swing.JFrame {
         jSdia = new javax.swing.JSpinner();
         jMostrar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(

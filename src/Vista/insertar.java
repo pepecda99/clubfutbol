@@ -113,8 +113,6 @@ public class insertar extends javax.swing.JFrame {
         jSpinner23 = new javax.swing.JSpinner();
         jSpinner24 = new javax.swing.JSpinner();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         insJugador.setText("INSERTAR JUGADOR");
 
         insEquipo.setText("INSERTAR EQUIPO");

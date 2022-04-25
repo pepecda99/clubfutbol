@@ -27,9 +27,8 @@ public class Eliminar extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        B_Eliminar_Jugador = new javax.swing.JButton();
         T_Insertar_Jugador = new javax.swing.JTextField();
-        B_Eliminar_Equipo = new javax.swing.JButton();
+        B_Eliminar_Jugador = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         T_Insertar_Equipo = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -41,29 +40,19 @@ public class Eliminar extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         T_Insertar_Gol = new javax.swing.JTextField();
         B_Eliminar_Gol = new javax.swing.JButton();
-        jSeparator1 = new javax.swing.JSeparator();
-        jSeparator2 = new javax.swing.JSeparator();
-        jSeparator3 = new javax.swing.JSeparator();
-        jSeparator4 = new javax.swing.JSeparator();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        B_Eliminar_Equipo1 = new javax.swing.JButton();
+        jSeparator5 = new javax.swing.JSeparator();
+        jSeparator6 = new javax.swing.JSeparator();
+        jSeparator7 = new javax.swing.JSeparator();
+        jSeparator8 = new javax.swing.JSeparator();
 
         jLabel1.setText("Inserte el Jugador");
 
         B_Eliminar_Jugador.setBackground(new java.awt.Color(204, 204, 204));
         B_Eliminar_Jugador.setText("Eliminar");
-        B_Eliminar_Jugador.setContentAreaFilled(false);
         B_Eliminar_Jugador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 B_Eliminar_JugadorActionPerformed(evt);
-            }
-        });
-
-        B_Eliminar_Equipo.setBackground(new java.awt.Color(204, 204, 204));
-        B_Eliminar_Equipo.setText("Eliminar");
-        B_Eliminar_Equipo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                B_Eliminar_EquipoActionPerformed(evt);
             }
         });
 
@@ -99,6 +88,14 @@ public class Eliminar extends javax.swing.JFrame {
             }
         });
 
+        B_Eliminar_Equipo1.setBackground(new java.awt.Color(204, 204, 204));
+        B_Eliminar_Equipo1.setText("Eliminar");
+        B_Eliminar_Equipo1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B_Eliminar_Equipo1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -107,39 +104,37 @@ public class Eliminar extends javax.swing.JFrame {
                 .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(T_Insertar_Jugador, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(B_Eliminar_Jugador)
-                        .addGap(2, 2, 2))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(167, 167, 167)
+                        .addComponent(B_Eliminar_Jugador))
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(T_Insertar_Partido, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(B_Eliminar_Partido))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(T_Insertar_Equipo, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(B_Eliminar_Equipo))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(T_Insertar_Presidente, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(B_Eliminar_Presidente))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(T_Insertar_Gol, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(B_Eliminar_Gol))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(T_Insertar_Equipo, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1)
                             .addComponent(jLabel3)
                             .addComponent(jLabel2)
                             .addComponent(jLabel4)
                             .addComponent(jLabel5))
-                        .addGap(334, 334, 334)))
-                .addGap(69, 69, 69))
-            .addComponent(jSeparator1)
-            .addComponent(jSeparator2)
-            .addComponent(jSeparator3)
-            .addComponent(jSeparator4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(B_Eliminar_Equipo1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(T_Insertar_Presidente, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(B_Eliminar_Presidente))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(T_Insertar_Gol, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(B_Eliminar_Gol)))
+                .addGap(57, 57, 57))
+            .addComponent(jSeparator5)
+            .addComponent(jSeparator6, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jSeparator7)
+            .addComponent(jSeparator8)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -147,44 +142,40 @@ public class Eliminar extends javax.swing.JFrame {
                 .addContainerGap(16, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(B_Eliminar_Jugador)
-                    .addComponent(T_Insertar_Jugador, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(T_Insertar_Jugador, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(B_Eliminar_Jugador))
+                .addGap(35, 35, 35)
+                .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(T_Insertar_Equipo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(B_Eliminar_Equipo))
+                .addComponent(jLabel2)
                 .addGap(18, 18, 18)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(T_Insertar_Equipo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(B_Eliminar_Equipo1))
                 .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(18, 18, 18)
-                        .addComponent(T_Insertar_Partido, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(T_Insertar_Partido, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(B_Eliminar_Partido))
-                .addGap(18, 18, 18)
-                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(18, 18, 18)
-                        .addComponent(T_Insertar_Presidente, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLabel4)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(T_Insertar_Presidente, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(B_Eliminar_Presidente))
+                .addGap(35, 35, 35)
+                .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(18, 18, 18)
-                        .addComponent(T_Insertar_Gol, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLabel5)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(T_Insertar_Gol, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(B_Eliminar_Gol))
                 .addGap(66, 66, 66))
         );
@@ -195,10 +186,6 @@ public class Eliminar extends javax.swing.JFrame {
     private void B_Eliminar_JugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_Eliminar_JugadorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_B_Eliminar_JugadorActionPerformed
-
-    private void B_Eliminar_EquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_Eliminar_EquipoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_B_Eliminar_EquipoActionPerformed
 
     private void B_Eliminar_PartidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_Eliminar_PartidoActionPerformed
         // TODO add your handling code here:
@@ -211,6 +198,10 @@ public class Eliminar extends javax.swing.JFrame {
     private void B_Eliminar_GolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_Eliminar_GolActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_B_Eliminar_GolActionPerformed
+
+    private void B_Eliminar_Equipo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_Eliminar_Equipo1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_B_Eliminar_Equipo1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -248,7 +239,7 @@ public class Eliminar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton B_Eliminar_Equipo;
+    private javax.swing.JButton B_Eliminar_Equipo1;
     private javax.swing.JButton B_Eliminar_Gol;
     private javax.swing.JButton B_Eliminar_Jugador;
     private javax.swing.JButton B_Eliminar_Partido;
@@ -263,9 +254,9 @@ public class Eliminar extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JSeparator jSeparator8;
     // End of variables declaration//GEN-END:variables
 }

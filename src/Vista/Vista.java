@@ -17,6 +17,8 @@ import java.util.logging.Logger;
 public class Vista extends javax.swing.JFrame {
     private Controlador cn= new Controlador();
     private Consultarpartidos conspar;
+    private Eliminar e;
+    private insertar i;
     /**
      * Creates new form Vista
      */
@@ -104,11 +106,13 @@ public class Vista extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEliminarActionPerformed
-        // TODO add your handling code here:
+        e=new Eliminar();
+        e.setVisible(true);
     }//GEN-LAST:event_jEliminarActionPerformed
 
     private void jInsertaryactualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jInsertaryactualizarActionPerformed
-        // TODO add your handling code here:
+        i=new insertar();
+        i.setVisible(true);
     }//GEN-LAST:event_jInsertaryactualizarActionPerformed
 
     private void jConsultarPartidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jConsultarPartidosActionPerformed
