@@ -37,6 +37,7 @@ public class Vista extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jEliminar = new javax.swing.JButton();
         jInsertaryactualizar = new javax.swing.JButton();
@@ -164,6 +165,7 @@ public class Vista extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jConsultarPartidos;
     private javax.swing.JButton jEliminar;
     private javax.swing.JButton jInsertaryactualizar;
