@@ -18,7 +18,7 @@ public class Vista extends javax.swing.JFrame {
     private Controlador cn= new Controlador();
     private Consultarpartidos conspar;
     private Eliminar e;
-    private insertar i;
+    private Insertar i;
     /**
      * Creates new form Vista
      */
@@ -112,7 +112,7 @@ public class Vista extends javax.swing.JFrame {
     }//GEN-LAST:event_jEliminarActionPerformed
 
     private void jInsertaryactualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jInsertaryactualizarActionPerformed
-        i=new insertar();
+        i=new Insertar();
         i.setVisible(true);
     }//GEN-LAST:event_jInsertaryactualizarActionPerformed
 
