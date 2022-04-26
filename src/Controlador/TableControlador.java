@@ -123,13 +123,13 @@ puntuacion, String sinopsis) throws SQLException {
     public Object getValueAt(int rowIndex, int columnIndex) {
         switch (columnIndex) {
             case 0:
-                return list.get(rowIndex).getE1();
+                return list.get(rowIndex).getCodigo_equipo1();
             case 1:
                 return list.get(rowIndex).getGoles_en_casa();
             case 2:
                 return list.get(rowIndex).getGoloes_visita();
             case 3:
-                return list.get(rowIndex).getE2();
+                return list.get(rowIndex).getCodigo_equipo2();
         }
         return null;
     }

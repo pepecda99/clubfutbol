@@ -21,7 +21,7 @@ public class Consultarpartidos extends javax.swing.JFrame {
      */
     public Consultarpartidos() throws SQLException {
         initComponents();
-        
+        tb.cargarPeliculas();
     }
 
     /**

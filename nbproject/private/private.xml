@@ -3,13 +3,20 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/MEDAC/Documents/GitHub/clubfutbol/clubfutbol/src/Vista/Consultarpartidos.java</file>
+            <file>file:/C:/Users/MEDAC/Documents/GitHub/clubfutbol/clubfutbol/src/Controlador/TableControlador.java</file>
+            <file>file:/C:/Users/MEDAC/Documents/GitHub/clubfutbol/clubfutbol/src/Modelo/Presidente.java</file>
             <file>file:/C:/Users/MEDAC/Documents/GitHub/clubfutbol/clubfutbol/src/Controlador/ControladorEquipo.java</file>
-            <file>file:/C:/Users/MEDAC/Documents/GitHub/clubfutbol/clubfutbol/src/Modelo/Consultas.java</file>
             <file>file:/C:/Users/MEDAC/Documents/GitHub/clubfutbol/clubfutbol/src/Modelo/Conexion.java</file>
-            <file>file:/C:/Users/MEDAC/Documents/GitHub/clubfutbol/clubfutbol/src/Controlador/ControladorJugador.java</file>
-            <file>file:/C:/Users/MEDAC/Documents/GitHub/clubfutbol/clubfutbol/src/Controlador/Controlador.java</file>
+            <file>file:/C:/Users/MEDAC/Documents/GitHub/clubfutbol/clubfutbol/src/Modelo/Partido.java</file>
             <file>file:/C:/Users/MEDAC/Documents/GitHub/clubfutbol/clubfutbol/src/Controlador/ControladorGol.java</file>
+            <file>file:/C:/Users/MEDAC/Documents/GitHub/clubfutbol/clubfutbol/src/Controlador/ControladorPartido.java</file>
+            <file>file:/C:/Users/MEDAC/Documents/GitHub/clubfutbol/clubfutbol/src/Vista/Consultarpartidos.java</file>
+            <file>file:/C:/Users/MEDAC/Documents/GitHub/clubfutbol/clubfutbol/src/Controlador/ControladorPresidente.java</file>
+            <file>file:/C:/Users/MEDAC/Documents/GitHub/clubfutbol/clubfutbol/src/Modelo/Consultas.java</file>
+            <file>file:/C:/Users/MEDAC/Documents/GitHub/clubfutbol/clubfutbol/src/Controlador/ControladorJugador.java</file>
+            <file>file:/C:/Users/MEDAC/Documents/GitHub/clubfutbol/clubfutbol/src/Vista/insertar.java</file>
+            <file>file:/C:/Users/MEDAC/Documents/GitHub/clubfutbol/clubfutbol/src/Vista/Eliminar.java</file>
+            <file>file:/C:/Users/MEDAC/Documents/GitHub/clubfutbol/clubfutbol/src/Controlador/Controlador.java</file>
             <file>file:/C:/Users/MEDAC/Documents/GitHub/clubfutbol/clubfutbol/src/Modelo/Equipo.java</file>
             <file>file:/C:/Users/MEDAC/Documents/GitHub/clubfutbol/clubfutbol/src/Vista/Vista.java</file>
         </group>

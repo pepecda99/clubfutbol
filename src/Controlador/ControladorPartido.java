@@ -27,14 +27,15 @@ public class ControladorPartido {
         try{
             Conexion.getConexion();
             Statement st = Conexion.createdStatement();
-            ResultSet rs = st.executeQuery("SELECT codigo_equipo, goles_casa, codigo_equipo2, goles_visitas FROM `partidos` WHERE codigo=1;");
+            ResultSet rs = st.executeQuery("SELECT * FROM partidos;");
             while(rs.next()){
                 Partido p = new Partido();
-                //p.setCodigo_del_partido(rs.getInt("codigo_partido"));
-                p.setE1(rs.getInt("codigo_equipo1"));
-                p.setE2(rs.getInt("codigo_equipo2"));
+                p.setCodigo_del_partido(rs.getInt("codigo"));
+                p.setCodigo_equipo1(rs.getInt("codigo_equipo"));
+                p.setCodigo_equipo2(rs.getInt("codigo_equipo2"));
                 p.setGoles_en_casa(rs.getInt("goles_casa"));
                 p.setGoloes_visita(rs.getInt("goles_visitas"));
+                p.setFecha_del_partido(rs.getDate("fecha_partido"));
                 partido.add(p);
                 
             }
