@@ -5,9 +5,11 @@
 package Vista;
 
 import Controlador.ControladorJugador;
+import java.awt.Image;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -20,6 +22,9 @@ public class Eliminar extends javax.swing.JFrame {
         initComponents();
         contj=new ControladorJugador();
         this.setLocationRelativeTo(null);
+        Image icon = new ImageIcon(getClass().getResource("/Imagenes/icono.png")).getImage();
+        setIconImage(icon);
+        this.setTitle("Editar");
     }
 
     /**

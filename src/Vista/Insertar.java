@@ -1,5 +1,8 @@
 package Vista;
 
+import java.awt.Image;
+import javax.swing.ImageIcon;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -18,6 +21,9 @@ public class Insertar extends javax.swing.JFrame {
     public Insertar() {
         initComponents();
         this.setLocationRelativeTo(null);
+        Image icon = new ImageIcon(getClass().getResource("/Imagenes/icono.png")).getImage();
+        setIconImage(icon);
+        this.setTitle("Insertar datos");
     }
 
     /** This method is called from within the constructor to

@@ -6,9 +6,11 @@
 package Vista;
 
 import Controlador.Controlador;
+import java.awt.Image;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -23,8 +25,11 @@ public class Vista extends javax.swing.JFrame {
      * Creates new form Vista
      */
     public Vista() throws SQLException {
+        Image icon = new ImageIcon(getClass().getResource("/Imagenes/icono.png")).getImage();
+        setIconImage(icon);
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setTitle("Menú");
         
         
     }
@@ -43,11 +48,15 @@ public class Vista extends javax.swing.JFrame {
         jEliminar = new javax.swing.JButton();
         jInsertaryactualizar = new javax.swing.JButton();
         jConsultarPartidos = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setBorder(new javax.swing.border.MatteBorder(null));
 
+        jEliminar.setBackground(new java.awt.Color(153, 255, 255));
+        jEliminar.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
         jEliminar.setText("Eliminar");
         jEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -55,6 +64,8 @@ public class Vista extends javax.swing.JFrame {
             }
         });
 
+        jInsertaryactualizar.setBackground(new java.awt.Color(153, 255, 255));
+        jInsertaryactualizar.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
         jInsertaryactualizar.setText("Insertar y actualizar");
         jInsertaryactualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -62,6 +73,8 @@ public class Vista extends javax.swing.JFrame {
             }
         });
 
+        jConsultarPartidos.setBackground(new java.awt.Color(153, 255, 255));
+        jConsultarPartidos.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
         jConsultarPartidos.setText("Consultar partidos");
         jConsultarPartidos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -69,39 +82,48 @@ public class Vista extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LaLiga_Santander_logo_(stacked).svg.png"))); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(171, 171, 171)
-                .addComponent(jInsertaryactualizar)
-                .addGap(135, 135, 135)
-                .addComponent(jEliminar)
-                .addGap(165, 165, 165)
-                .addComponent(jConsultarPartidos)
-                .addContainerGap(195, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(318, 318, 318)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(142, 142, 142)
+                        .addComponent(jInsertaryactualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(117, 117, 117)
+                        .addComponent(jEliminar)
+                        .addGap(164, 164, 164)
+                        .addComponent(jConsultarPartidos)))
+                .addContainerGap(185, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(297, Short.MAX_VALUE)
+                .addContainerGap(136, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(132, 132, 132)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jInsertaryactualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jEliminar)
-                    .addComponent(jInsertaryactualizar)
                     .addComponent(jConsultarPartidos))
-                .addGap(343, 343, 343))
+                .addGap(313, 313, 313))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -174,6 +196,7 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JButton jConsultarPartidos;
     private javax.swing.JButton jEliminar;
     private javax.swing.JButton jInsertaryactualizar;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
