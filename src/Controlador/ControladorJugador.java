@@ -20,8 +20,6 @@ public class ControladorJugador {
     }
     public void insertarbuscareliminarj (String consulta) throws SQLException{
         try{
-            
-        
         Conexion.getConexion();
         cons.ejecutarInsertDeleteUpdate(consulta);
     }catch(SQLException e){

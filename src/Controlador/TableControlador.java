@@ -24,6 +24,7 @@ public class TableControlador extends AbstractTableModel {
     private int golescasa;
     private int golesvisita;
     private int codigopartido;
+    //hola
 
     public int getCodigoequipo1() {
         return codigoequipo1;

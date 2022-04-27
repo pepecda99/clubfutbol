@@ -18,6 +18,10 @@ public class Equipo {
     private Date año_fundacion_del_equipo;
     private String ciudad;
     private int codigo_equipo;
+    
+    public Equipo(){
+        this.nombre_Equipo="";
+    }
 
     public Equipo(String nombre_Equipo, String nombre_EStadio, int aforo, Date año_fundacion_del_equipo, String ciudad, int codigo_equipo) {
         this.nombre_Equipo = nombre_Equipo;
