@@ -16,8 +16,8 @@ import java.sql.Statement;
  */
 public class Conexion {
     private static final String bd= "clubfutbol";
-    private static final String usuario = "root";
-    private static final String contraseña= "";
+    private static final String usuario = "medac";
+    private static final String contraseña= "medac";
     private static final String url = "jdbc:mysql://localhost/" + bd;
     private static Connection cn=null;
 
