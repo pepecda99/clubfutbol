@@ -24,6 +24,7 @@ public class Vista extends javax.swing.JFrame {
      */
     public Vista() throws SQLException {
         initComponents();
+        this.setLocationRelativeTo(null);
         
         
     }
@@ -107,7 +108,11 @@ public class Vista extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEliminarActionPerformed
-        e=new Eliminar();
+        try {
+            e=new Eliminar();
+        } catch (SQLException ex) {
+            Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
+        }
         e.setVisible(true);
     }//GEN-LAST:event_jEliminarActionPerformed
 

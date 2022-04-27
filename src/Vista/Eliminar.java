@@ -4,17 +4,22 @@
  */
 package Vista;
 
+import Controlador.ControladorJugador;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
- * @author MEDAC-INVITADO
+ * @author pildorasinformaticas
  */
 public class Eliminar extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Eliminar
-     */
-    public Eliminar() {
+    ControladorJugador contj;
+    public Eliminar() throws SQLException {
         initComponents();
+        contj=new ControladorJugador();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -45,6 +50,8 @@ public class Eliminar extends javax.swing.JFrame {
         jSeparator6 = new javax.swing.JSeparator();
         jSeparator7 = new javax.swing.JSeparator();
         jSeparator8 = new javax.swing.JSeparator();
+        jLabel6 = new javax.swing.JLabel();
+        T_Insertar_Codigo_partido = new javax.swing.JTextField();
 
         jLabel1.setText("Inserte el Jugador");
 
@@ -78,7 +85,7 @@ public class Eliminar extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setText("Inserte el Gol");
+        jLabel5.setText("Inserte el momento del Gol");
 
         B_Eliminar_Gol.setBackground(new java.awt.Color(204, 204, 204));
         B_Eliminar_Gol.setText("Eliminar");
@@ -96,50 +103,63 @@ public class Eliminar extends javax.swing.JFrame {
             }
         });
 
+        jLabel6.setText("Inserte el Codigo del Partido");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(T_Insertar_Jugador, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(167, 167, 167)
-                        .addComponent(B_Eliminar_Jugador))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(T_Insertar_Partido, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(B_Eliminar_Partido))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(T_Insertar_Equipo, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(B_Eliminar_Equipo1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(T_Insertar_Presidente, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(B_Eliminar_Presidente))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(T_Insertar_Gol, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(B_Eliminar_Gol)))
-                .addGap(57, 57, 57))
             .addComponent(jSeparator5)
             .addComponent(jSeparator6, javax.swing.GroupLayout.Alignment.TRAILING)
             .addComponent(jSeparator7)
             .addComponent(jSeparator8)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 11, Short.MAX_VALUE)
+                                .addComponent(T_Insertar_Jugador, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(167, 167, 167)
+                                .addComponent(B_Eliminar_Jugador))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(T_Insertar_Partido, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(B_Eliminar_Partido))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(T_Insertar_Equipo, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel4))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(B_Eliminar_Equipo1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(T_Insertar_Presidente, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(B_Eliminar_Presidente))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(T_Insertar_Gol, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(57, 57, 57))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(T_Insertar_Codigo_partido, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(B_Eliminar_Gol)
+                        .addGap(54, 54, 54))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(16, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -171,36 +191,85 @@ public class Eliminar extends javax.swing.JFrame {
                     .addComponent(B_Eliminar_Presidente))
                 .addGap(35, 35, 35)
                 .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(T_Insertar_Gol, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(T_Insertar_Gol, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6)
                     .addComponent(B_Eliminar_Gol))
-                .addGap(66, 66, 66))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(T_Insertar_Codigo_partido, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void B_Eliminar_JugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_Eliminar_JugadorActionPerformed
-        // TODO add your handling code here:
+        try {
+            String codigo= T_Insertar_Jugador.getText();
+            contj.insertarbuscareliminarj("DELETE FROM jugador WHERE jugador.codigo = "+codigo+";");
+        } catch (SQLException ex) {
+            Logger.getLogger(Eliminar.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        T_Insertar_Jugador.setText(" ");
     }//GEN-LAST:event_B_Eliminar_JugadorActionPerformed
 
     private void B_Eliminar_PartidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_Eliminar_PartidoActionPerformed
-        // TODO add your handling code here:
+        
+        try {
+            String codigoPartido = T_Insertar_Partido.getText();
+            contj.insertarbuscareliminarj("DELETE FROM partidos WHERE partidos.codigo = "+codigoPartido+";");
+        } catch (SQLException ex) {
+           Logger.getLogger(Eliminar.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        T_Insertar_Partido.setText(" ");
+
     }//GEN-LAST:event_B_Eliminar_PartidoActionPerformed
 
     private void B_Eliminar_PresidenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_Eliminar_PresidenteActionPerformed
-        // TODO add your handling code here:
+   try {
+            String dni = T_Insertar_Presidente.getText();
+            contj.insertarbuscareliminarj("DELETE FROM presidentes WHERE dni='"+dni+"';");
+        } catch (SQLException ex) {
+           Logger.getLogger(Eliminar.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        T_Insertar_Presidente.setText(" ");
+
+
     }//GEN-LAST:event_B_Eliminar_PresidenteActionPerformed
 
     private void B_Eliminar_GolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_Eliminar_GolActionPerformed
-        // TODO add your handling code here:
+        
+        
+           try {
+            String codigoGol = T_Insertar_Gol.getText();
+            String codigoPartido=T_Insertar_Codigo_partido.getText();
+            contj.insertarbuscareliminarj("DELETE FROM goles where goles.momento_gol="+codigoGol+" and goles.codigo_partido="+codigoPartido+";");
+        } catch (SQLException ex) {
+           Logger.getLogger(Eliminar.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        T_Insertar_Gol.setText(" ");
+        
+
+        
+        
     }//GEN-LAST:event_B_Eliminar_GolActionPerformed
 
     private void B_Eliminar_Equipo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_Eliminar_Equipo1ActionPerformed
-        // TODO add your handling code here:
+
+        
+           try {
+            String codigoEquipo = T_Insertar_Equipo.getText();
+            contj.insertarbuscareliminarj("DELETE FROM equipo WHERE equipo.codigo = " +codigoEquipo+";");
+        } catch (SQLException ex) {
+           Logger.getLogger(Eliminar.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        T_Insertar_Equipo.setText(" ");
+        
+
     }//GEN-LAST:event_B_Eliminar_Equipo1ActionPerformed
 
     /**
@@ -233,7 +302,11 @@ public class Eliminar extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Eliminar().setVisible(true);
+                try {
+                    new Eliminar().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Eliminar.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -244,6 +317,7 @@ public class Eliminar extends javax.swing.JFrame {
     private javax.swing.JButton B_Eliminar_Jugador;
     private javax.swing.JButton B_Eliminar_Partido;
     private javax.swing.JButton B_Eliminar_Presidente;
+    private javax.swing.JTextField T_Insertar_Codigo_partido;
     private javax.swing.JTextField T_Insertar_Equipo;
     private javax.swing.JTextField T_Insertar_Gol;
     private javax.swing.JTextField T_Insertar_Jugador;
@@ -254,6 +328,7 @@ public class Eliminar extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
