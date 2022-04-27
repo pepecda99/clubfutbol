@@ -6,6 +6,7 @@
 package Controlador;
 
 import Modelo.Conexion;
+import Modelo.Consultas;
 import Modelo.Partido;
 import java.awt.List;
 import java.sql.ResultSet;
@@ -19,10 +20,21 @@ import java.util.ArrayList;
  */
 public class ControladorPartido {
     Controlador c;
+    Consultas cons;
     ArrayList partido=new ArrayList();
     public ControladorPartido() throws SQLException{
-        
+        cons=new Consultas();
     }
+    public void insertarbuscareliminarj (String consulta) throws SQLException{
+        try{
+            Conexion.getConexion();
+            cons.ejecutarInsertDeleteUpdate(consulta);
+        }catch(SQLException e){
+            System.out.println(e);
+        }finally{
+            Conexion.desconectar();
+        }
+}
     public ArrayList<Partido> sacarPartido() throws SQLException{
         try{
             Conexion.getConexion();
@@ -36,6 +48,8 @@ public class ControladorPartido {
                 p.setGoles_en_casa(rs.getInt("goles_casa"));
                 p.setGoloes_visita(rs.getInt("goles_visitas"));
                 p.setFecha_del_partido(rs.getDate("fecha_partido"));
+                
+               
                 partido.add(p);
                 
             }

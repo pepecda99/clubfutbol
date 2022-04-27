@@ -19,6 +19,10 @@ public class Partido {
     private int codigo_del_partido;
     private int codigo_equipo1;
     private int codigo_equipo2;
+    private String nombre_equipo1;
+    private String nombre_equipo2;
+    private Equipo e1;
+    private Equipo e2;
 
     public int getCodigo_equipo1() {
         return codigo_equipo1;
@@ -35,8 +39,7 @@ public class Partido {
     public void setCodigo_equipo2(int codigo_equipo2) {
         this.codigo_equipo2 = codigo_equipo2;
     }
-    private Equipo e1;
-    private Equipo e2;
+
     
 
     public Partido(Date fecha_del_partido, int goles_en_casa, int goloes_visita, int codigo_del_partido, int codigo_equipo1, int codigo_equipo2) {

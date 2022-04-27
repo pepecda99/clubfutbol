@@ -5,10 +5,27 @@
  */
 package Controlador;
 
+import Modelo.Conexion;
+import Modelo.Consultas;
+import java.sql.SQLException;
+
 /**
  *
  * @author 34684
  */
 public class ControladorPresidente {
-    
+    Consultas cons;
+   public ControladorPresidente() throws SQLException{
+       cons= new Consultas();
+   }
+    public void insertarbuscareliminarj (String consulta) throws SQLException{
+        try{
+            Conexion.getConexion();
+            cons.ejecutarInsertDeleteUpdate(consulta);
+        }catch(SQLException e){
+            System.out.println(e);
+        }finally{
+            Conexion.desconectar();
+        }
+}
 }
