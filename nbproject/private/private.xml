@@ -3,18 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/MEDAC/Desktop/clubfutbol/src/Modelo/Partido.java</file>
-            <file>file:/C:/Users/MEDAC/Desktop/clubfutbol/src/Modelo/Conexion.java</file>
-            <file>file:/C:/Users/MEDAC/Desktop/clubfutbol/src/Controlador/ControladorPresidente.java</file>
-            <file>file:/C:/Users/MEDAC/Desktop/clubfutbol/src/Controlador/ControladorEquipo.java</file>
-            <file>file:/C:/Users/MEDAC/Desktop/clubfutbol/src/Controlador/ControladorJugador.java</file>
-            <file>file:/C:/Users/MEDAC/Desktop/clubfutbol/src/Modelo/Gol.java</file>
-            <file>file:/C:/Users/MEDAC/Desktop/clubfutbol/src/Controlador/ControladorPartido.java</file>
-            <file>file:/C:/Users/MEDAC/Desktop/clubfutbol/src/Modelo/Consultas.java</file>
-            <file>file:/C:/Users/MEDAC/Desktop/clubfutbol/src/Controlador/TableControlador.java</file>
-            <file>file:/C:/Users/MEDAC/Desktop/clubfutbol/src/Controlador/ControladorGol.java</file>
-            <file>file:/C:/Users/MEDAC/Desktop/clubfutbol/src/Modelo/Equipo.java</file>
-            <file>file:/C:/Users/MEDAC/Desktop/clubfutbol/src/Vista/Consultarpartidos.java</file>
+            <file>file:/C:/Users/MEDAC/Desktop/clubfutboldefinitivo/src/Vista/Vista.java</file>
+            <file>file:/C:/Users/MEDAC/Desktop/clubfutboldefinitivo/src/Vista/Insertar.java</file>
+            <file>file:/C:/Users/MEDAC/Desktop/clubfutboldefinitivo/src/Vista/Eliminar.java</file>
         </group>
     </open-files>
 </project-private>

@@ -1,6 +1,14 @@
 package Vista;
 
+import Controlador.ControladorEquipo;
+import Controlador.ControladorGol;
+import Controlador.ControladorJugador;
+import Controlador.ControladorPartido;
+import Controlador.ControladorPresidente;
 import java.awt.Image;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 
 /*
@@ -16,10 +24,20 @@ import javax.swing.ImageIcon;
  * @author MEDC
  */
 public class Insertar extends javax.swing.JFrame {
+    ControladorJugador cj;
+    ControladorEquipo ce;
+    ControladorPartido cpa;
+    ControladorPresidente cpr;
+    ControladorGol cg;
 
     /** Creates new form insertar */
-    public Insertar() {
+    public Insertar() throws SQLException {
         initComponents();
+        cj = new ControladorJugador();
+        ce = new ControladorEquipo();
+        cpa = new ControladorPartido();
+        cpr = new ControladorPresidente();
+        cg = new ControladorGol();
         this.setLocationRelativeTo(null);
         Image icon = new ImageIcon(getClass().getResource("/Imagenes/icono.png")).getImage();
         setIconImage(icon);
@@ -50,13 +68,10 @@ public class Insertar extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
@@ -64,26 +79,19 @@ public class Insertar extends javax.swing.JFrame {
         jLabel26 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
-        jLabel29 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
-        jLabel32 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
         jLabel36 = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
         jLabel38 = new javax.swing.JLabel();
-        jLabel39 = new javax.swing.JLabel();
         jLabel40 = new javax.swing.JLabel();
         jLabel41 = new javax.swing.JLabel();
-        jLabel42 = new javax.swing.JLabel();
         jLabel43 = new javax.swing.JLabel();
         jLabel44 = new javax.swing.JLabel();
         jLabel45 = new javax.swing.JLabel();
         jLabel46 = new javax.swing.JLabel();
-        jLabel47 = new javax.swing.JLabel();
-        jLabel48 = new javax.swing.JLabel();
         jLabel49 = new javax.swing.JLabel();
-        jLabel50 = new javax.swing.JLabel();
         diaNacJug = new javax.swing.JSpinner();
         aforo = new javax.swing.JSpinner();
         añoPresidencia = new javax.swing.JSpinner();
@@ -118,250 +126,403 @@ public class Insertar extends javax.swing.JFrame {
         codigoGol = new javax.swing.JTextField();
         codigoLocal = new javax.swing.JTextField();
         codigoVisitante = new javax.swing.JTextField();
-        CodigoEquipoFk2 = new javax.swing.JTextField();
+        codigoEquipoFk2 = new javax.swing.JTextField();
         añoFund = new javax.swing.JSpinner();
-        mesPartido1 = new javax.swing.JSpinner();
-        diaPartido1 = new javax.swing.JSpinner();
-        añoPartido1 = new javax.swing.JSpinner();
+        mesNacPresi = new javax.swing.JSpinner();
+        diaNacPresi = new javax.swing.JSpinner();
+        añoNacPresi = new javax.swing.JSpinner();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         insJugador.setText("INSERTAR JUGADOR");
-        getContentPane().add(insJugador, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 682, 147, -1));
+        insJugador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                insJugadorActionPerformed(evt);
+            }
+        });
+        getContentPane().add(insJugador, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 700, 147, -1));
 
         insEquipo.setText("INSERTAR EQUIPO");
-        getContentPane().add(insEquipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(226, 682, 137, -1));
+        insEquipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                insEquipoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(insEquipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 700, 150, -1));
 
         insPresidente.setText("INSERTAR PRESIDENTE");
-        getContentPane().add(insPresidente, new org.netbeans.lib.awtextra.AbsoluteConstraints(665, 682, 180, -1));
+        insPresidente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                insPresidenteActionPerformed(evt);
+            }
+        });
+        getContentPane().add(insPresidente, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 700, 160, -1));
 
         insPartido.setText("INSERTAR PARTIDO");
-        getContentPane().add(insPartido, new org.netbeans.lib.awtextra.AbsoluteConstraints(466, 682, 143, -1));
+        insPartido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                insPartidoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(insPartido, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 700, 143, -1));
 
         insGol.setText("INSERTAR GOL");
-        getContentPane().add(insGol, new org.netbeans.lib.awtextra.AbsoluteConstraints(944, 682, 133, -1));
+        insGol.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                insGolActionPerformed(evt);
+            }
+        });
+        getContentPane().add(insGol, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 700, 150, -1));
 
         actGol.setText("ACTUALIZAR GOL");
-        getContentPane().add(actGol, new org.netbeans.lib.awtextra.AbsoluteConstraints(944, 733, 140, -1));
+        actGol.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actGolActionPerformed(evt);
+            }
+        });
+        getContentPane().add(actGol, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 730, 150, -1));
 
         actPresidente.setText("ACTUALIZAR PRESIDENTE");
-        getContentPane().add(actPresidente, new org.netbeans.lib.awtextra.AbsoluteConstraints(665, 734, -1, -1));
+        actPresidente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actPresidenteActionPerformed(evt);
+            }
+        });
+        getContentPane().add(actPresidente, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 730, -1, -1));
 
         actPartido.setText("ACTUALIZAR PARTIDO");
-        getContentPane().add(actPartido, new org.netbeans.lib.awtextra.AbsoluteConstraints(466, 734, -1, -1));
+        actPartido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actPartidoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(actPartido, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 730, -1, -1));
 
         actEquipo.setText("ACTUALIZAR EQUIPO");
-        getContentPane().add(actEquipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(226, 734, -1, -1));
+        actEquipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actEquipoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(actEquipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 740, 150, 20));
 
         actJugador.setText("ACTUALIZAR JUGADOR");
-        getContentPane().add(actJugador, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 734, -1, -1));
+        actJugador.setPreferredSize(new java.awt.Dimension(133, 23));
+        actJugador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actJugadorActionPerformed(evt);
+            }
+        });
+        getContentPane().add(actJugador, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 734, 150, -1));
 
         jLabel9.setText("Estadio");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(217, 252, 37, -1));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 220, 37, -1));
 
-        jLabel11.setText("Código");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, -1, -1));
+        jLabel11.setText("Código Equipo:");
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, -1, -1));
 
         jLabel12.setText("Aforo");
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(233, 400, -1, -1));
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 380, -1, -1));
 
-        jLabel13.setText("Año");
-        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(215, 640, -1, -1));
+        jLabel13.setText("Año Fundación");
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 610, -1, -1));
 
-        jLabel14.setText("Nombre");
-        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(215, 132, -1, -1));
+        jLabel14.setText("Nombre del Equipo");
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 130, -1, -1));
 
-        jLabel15.setText("Fundación");
-        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(215, 660, -1, -1));
+        jLabel16.setText("Goles Local:");
+        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 260, 100, 20));
 
-        jLabel16.setText("Goles");
-        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 240, 37, -1));
+        jLabel18.setText("Código Equipo 1");
+        getContentPane().add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 380, -1, -1));
 
-        jLabel17.setText("Local");
-        getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 260, -1, -1));
+        jLabel19.setText("Código Partido:");
+        getContentPane().add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 30, -1, -1));
 
-        jLabel18.setText("Código");
-        getContentPane().add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(462, 542, -1, -1));
+        jLabel20.setText("Fecha del partido");
+        getContentPane().add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 130, -1, -1));
 
-        jLabel19.setText("Código");
-        getContentPane().add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(453, 11, -1, -1));
+        jLabel22.setText("Goles Visitante");
+        getContentPane().add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 320, -1, 20));
 
-        jLabel20.setText("Fecha");
-        getContentPane().add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 130, -1, -1));
-
-        jLabel21.setText("Equipo 1");
-        getContentPane().add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(453, 562, -1, -1));
-
-        jLabel22.setText("Goles");
-        getContentPane().add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 390, -1, -1));
-
-        jLabel23.setText("Código");
-        getContentPane().add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 640, -1, -1));
+        jLabel23.setText("Código Equipo");
+        getContentPane().add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 600, -1, -1));
 
         jLabel24.setText("DNI");
-        getContentPane().add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(665, 14, -1, -1));
+        getContentPane().add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 30, -1, -1));
 
-        jLabel25.setText("Fecha");
-        getContentPane().add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 340, 37, -1));
+        jLabel25.setText("Fecha Nacimiento");
+        getContentPane().add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 300, 110, -1));
 
         jLabel26.setText("Apellidos");
-        getContentPane().add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 250, -1, -1));
-
-        jLabel27.setText("Nacimiento");
+        getContentPane().add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 230, -1, -1));
         getContentPane().add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 360, -1, -1));
 
         jLabel28.setText("Equipo");
-        getContentPane().add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 490, -1, -1));
-
-        jLabel29.setText("Equipo");
-        getContentPane().add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 660, -1, -1));
+        getContentPane().add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 380, -1, -1));
 
         jLabel30.setText("Código");
-        getContentPane().add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(901, 11, -1, -1));
+        getContentPane().add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 30, -1, -1));
 
         jLabel31.setText("Descripción");
-        getContentPane().add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 390, 60, 20));
+        getContentPane().add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 230, 60, 20));
 
-        jLabel32.setText("Partido");
-        getContentPane().add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(901, 657, -1, -1));
-
-        jLabel33.setText("Código");
-        getContentPane().add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(901, 637, -1, -1));
+        jLabel33.setText("Código Partido");
+        getContentPane().add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 430, -1, -1));
 
         jLabel36.setText("Minuto");
-        getContentPane().add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 190, -1, -1));
+        getContentPane().add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 130, -1, -1));
 
-        jLabel37.setText("Código");
-        getContentPane().add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 11, -1, -1));
+        jLabel37.setText("Código Jugador:");
+        getContentPane().add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, -1, -1));
 
-        jLabel38.setText("Fecha");
-        getContentPane().add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 341, 37, -1));
+        jLabel38.setText("Fecha Nacimiento");
+        getContentPane().add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, 110, -1));
 
-        jLabel39.setText("Equipo");
-        getContentPane().add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 658, -1, -1));
-
-        jLabel40.setText("Código");
-        getContentPane().add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 638, -1, -1));
+        jLabel40.setText("Código Equipo");
+        getContentPane().add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 500, -1, -1));
 
         jLabel41.setText("Posición");
-        getContentPane().add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 495, -1, -1));
+        getContentPane().add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 380, -1, -1));
 
-        jLabel42.setText("Nacimiento");
-        getContentPane().add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 364, -1, -1));
-
-        jLabel43.setText("Nombre");
-        getContentPane().add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 130, -1, -1));
+        jLabel43.setText("Nombre del Jugador");
+        getContentPane().add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, -1, -1));
 
         jLabel44.setText("Ciudad");
-        getContentPane().add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 497, -1, -1));
+        getContentPane().add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 500, -1, -1));
 
-        jLabel45.setText("Nombre");
-        getContentPane().add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 140, -1, -1));
+        jLabel45.setText("Nombre Presidente");
+        getContentPane().add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 130, -1, -1));
 
-        jLabel46.setText("Año");
-        getContentPane().add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 550, -1, -1));
+        jLabel46.setText("Año presidencia");
+        getContentPane().add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 500, -1, -1));
 
-        jLabel47.setText("Presidencia");
-        getContentPane().add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 570, -1, -1));
-
-        jLabel48.setText("Visitante");
-        getContentPane().add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 410, -1, -1));
-
-        jLabel49.setText("Código");
-        getContentPane().add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(453, 638, -1, -1));
-
-        jLabel50.setText("Equipo 2");
-        getContentPane().add(jLabel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(453, 658, -1, -1));
+        jLabel49.setText("Código Equipo 2");
+        getContentPane().add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 500, -1, -1));
 
         diaNacJug.setModel(new javax.swing.SpinnerNumberModel(1, 1, 31, 1));
-        getContentPane().add(diaNacJug, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 340, -1, -1));
+        getContentPane().add(diaNacJug, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, -1, -1));
 
         aforo.setModel(new javax.swing.SpinnerNumberModel(4000, 4000, 100000, 1));
-        getContentPane().add(aforo, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 397, -1, -1));
+        getContentPane().add(aforo, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 410, 100, -1));
 
         añoPresidencia.setModel(new javax.swing.SpinnerNumberModel(1900, 1900, 2000, 1));
-        getContentPane().add(añoPresidencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 550, -1, -1));
-        getContentPane().add(golesVisitante, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 400, -1, -1));
-        getContentPane().add(golesLocal, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 250, -1, -1));
+        getContentPane().add(añoPresidencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 530, -1, -1));
+        getContentPane().add(golesVisitante, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 320, -1, -1));
+        getContentPane().add(golesLocal, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 260, -1, -1));
 
         minuto.setModel(new javax.swing.SpinnerNumberModel(1, 1, 120, 1));
-        getContentPane().add(minuto, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 190, -1, -1));
-        getContentPane().add(dni, new org.netbeans.lib.awtextra.AbsoluteConstraints(701, 11, 100, -1));
-        getContentPane().add(nombrePresidente, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 130, 130, -1));
-        getContentPane().add(apellidosPresidente, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 250, 130, -1));
+        getContentPane().add(minuto, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 170, -1, -1));
+        getContentPane().add(dni, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 60, 140, -1));
+        getContentPane().add(nombrePresidente, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 170, 150, -1));
+        getContentPane().add(apellidosPresidente, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 260, 150, -1));
 
         descripcion.setColumns(20);
         descripcion.setRows(5);
         jScrollPane2.setViewportView(descripcion);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 390, 150, 90));
-        getContentPane().add(equipoPresidente, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 490, 130, -1));
-        getContentPane().add(nombreEquipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 129, 100, -1));
-        getContentPane().add(estadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 249, 100, -1));
-        getContentPane().add(ciudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(276, 494, 100, -1));
-
-        posicionJugador.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                posicionJugadorActionPerformed(evt);
-            }
-        });
-        getContentPane().add(posicionJugador, new org.netbeans.lib.awtextra.AbsoluteConstraints(78, 492, 90, -1));
-        getContentPane().add(nombreJugador, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 127, 100, -1));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 280, 150, 90));
+        getContentPane().add(equipoPresidente, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 410, 150, -1));
+        getContentPane().add(nombreEquipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 160, -1));
+        getContentPane().add(estadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 260, 130, -1));
+        getContentPane().add(ciudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 540, 120, -1));
+        getContentPane().add(posicionJugador, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, 160, -1));
+        getContentPane().add(nombreJugador, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 150, -1));
 
         mesNacJug.setModel(new javax.swing.SpinnerNumberModel(1, 1, 12, 1));
-        getContentPane().add(mesNacJug, new org.netbeans.lib.awtextra.AbsoluteConstraints(129, 340, -1, -1));
+        getContentPane().add(mesNacJug, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, -1, -1));
 
         añoNacJug.setModel(new javax.swing.SpinnerNumberModel(1950, 1950, 2050, 1));
-        getContentPane().add(añoNacJug, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 360, -1, -1));
+        getContentPane().add(añoNacJug, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 260, -1, -1));
 
         mesPartido.setModel(new javax.swing.SpinnerNumberModel(1, 1, 12, 1));
-        getContentPane().add(mesPartido, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 130, -1, -1));
+        getContentPane().add(mesPartido, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 170, -1, -1));
 
         diaPartido.setModel(new javax.swing.SpinnerNumberModel(1, 1, 31, 1));
-        getContentPane().add(diaPartido, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 130, -1, -1));
+        getContentPane().add(diaPartido, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 170, -1, -1));
 
         añoPartido.setModel(new javax.swing.SpinnerNumberModel(1950, 1950, 2050, 1));
-        getContentPane().add(añoPartido, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 130, -1, -1));
+        getContentPane().add(añoPartido, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 170, -1, -1));
 
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, 11, 800));
+        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 10, 820));
 
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(394, 0, 11, 800));
+        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(414, 0, 20, 820));
 
         jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(628, 0, 11, 800));
+        getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 0, 10, 820));
 
         jSeparator4.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        getContentPane().add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(872, 0, 11, 800));
-        getContentPane().add(codigoPartidoFk, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 640, 120, -1));
-        getContentPane().add(codigoJugador, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 90, -1));
-        getContentPane().add(codigoEquipoFk, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 640, 80, -1));
-        getContentPane().add(codigoEquipoPk, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 10, 100, -1));
-        getContentPane().add(codigoPartido, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 10, 100, -1));
-        getContentPane().add(codigoGol, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 10, 100, -1));
-        getContentPane().add(codigoLocal, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 550, 100, -1));
-        getContentPane().add(codigoVisitante, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 640, 100, -1));
-        getContentPane().add(CodigoEquipoFk2, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 650, 110, -1));
+        getContentPane().add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(922, 0, 30, 820));
+        getContentPane().add(codigoPartidoFk, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 480, 150, -1));
+        getContentPane().add(codigoJugador, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 110, -1));
+        getContentPane().add(codigoEquipoFk, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 540, 130, -1));
+        getContentPane().add(codigoEquipoPk, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 60, 140, -1));
+        getContentPane().add(codigoPartido, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 60, 150, -1));
+        getContentPane().add(codigoGol, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 60, 140, -1));
+        getContentPane().add(codigoLocal, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 410, 130, -1));
+        getContentPane().add(codigoVisitante, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 540, 120, -1));
+        getContentPane().add(codigoEquipoFk2, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 630, 110, -1));
 
-        añoFund.setModel(new javax.swing.SpinnerNumberModel(1950, 1950, 2050, 1));
-        getContentPane().add(añoFund, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 650, -1, -1));
+        añoFund.setModel(new javax.swing.SpinnerNumberModel(1850, 1850, 2050, 1));
+        getContentPane().add(añoFund, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 640, 80, -1));
 
-        mesPartido1.setModel(new javax.swing.SpinnerNumberModel(1, 1, 12, 1));
-        getContentPane().add(mesPartido1, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 330, -1, -1));
+        mesNacPresi.setModel(new javax.swing.SpinnerNumberModel(1, 1, 12, 1));
+        getContentPane().add(mesNacPresi, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 320, -1, -1));
 
-        diaPartido1.setModel(new javax.swing.SpinnerNumberModel(1, 1, 31, 1));
-        getContentPane().add(diaPartido1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 330, -1, -1));
+        diaNacPresi.setModel(new javax.swing.SpinnerNumberModel(1, 1, 31, 1));
+        getContentPane().add(diaNacPresi, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 320, -1, -1));
 
-        añoPartido1.setModel(new javax.swing.SpinnerNumberModel(1950, 1950, 2050, 1));
-        getContentPane().add(añoPartido1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 350, -1, -1));
+        añoNacPresi.setModel(new javax.swing.SpinnerNumberModel(1950, 1950, 2050, 1));
+        getContentPane().add(añoNacPresi, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 320, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void posicionJugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_posicionJugadorActionPerformed
+    private void insJugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insJugadorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_posicionJugadorActionPerformed
+        try {
+            int codeJugador = Integer.parseInt(codigoJugador.getText());
+            int codeEquipo = Integer.parseInt(codigoEquipoFk.getText());
+            String nombre = nombreJugador.getText();
+            String posicion = posicionJugador.getText();
+            String fechaNacimiento = añoNacJug.getValue().toString() + "-" + mesNacJug.getValue().toString() + "-" + diaNacJug.getValue().toString();
+            cj.insertarbuscareliminarj("INSERT INTO jugador(codigo, nombre, fech_nacimiento, posicion, codigo_equipo)VALUES('" + codeJugador + "','" + nombre + "','" + fechaNacimiento + "','" + posicion + "','" + codeEquipo + "');");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }//GEN-LAST:event_insJugadorActionPerformed
+
+    private void actJugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actJugadorActionPerformed
+        // TODO add your handling code here:
+        try {
+            int codeJugador = Integer.parseInt(codigoJugador.getText());
+            int codeEquipo = Integer.parseInt(codigoEquipoFk.getText());
+            String nombre = nombreJugador.getText();
+            String posicion = posicionJugador.getText();
+            String fechaNacimiento = añoNacJug.getValue().toString() + "-" + mesNacJug.getValue().toString() + "-" + diaNacJug.getValue().toString();
+            cj.insertarbuscareliminarj("UPDATE jugador SET nombre='"+nombre+"', fech_nacimiento='"+fechaNacimiento+"',posicion='"+posicion+"', codigo_equipo='"+codeEquipo+"' WHERE codigo='"+codeJugador+"';");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }//GEN-LAST:event_actJugadorActionPerformed
+
+    private void insEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insEquipoActionPerformed
+        // TODO add your handling code here:
+        try {
+            int codeEquipo = Integer.parseInt(codigoEquipoPk.getText());
+            String nombre = nombreEquipo.getText();
+            String nombreEstadio = estadio.getText();
+            String ciudadEquipo = ciudad.getText();
+            int aforoEstadio = (int) aforo.getValue();
+            int fundacion = (int) añoFund.getValue();
+            ce.insertarbuscareliminarj("INSERT INTO equipo(codigo, nombre_equipo, nombre_estadio, aforo, año_fundacion, ciudad)VALUES('" + codeEquipo + "','" + nombre + "','" + nombreEstadio + "','" + aforoEstadio + "','" + fundacion + "','" + ciudadEquipo + "');");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }//GEN-LAST:event_insEquipoActionPerformed
+
+    private void actEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actEquipoActionPerformed
+        // TODO add your handling code here:
+        try {
+            int codeEquipo = Integer.parseInt(codigoEquipoPk.getText());
+            String nombre = nombreEquipo.getText();
+            String nombreEstadio = estadio.getText();
+            String ciudadEquipo = ciudad.getText();
+            int aforoEstadio = (int) aforo.getValue();
+            int fundacion = (int) añoFund.getValue();
+            ce.insertarbuscareliminarj("UPDATE equipo SET nombre_equipo='"+nombre+"', nombre_estadio='"+nombreEstadio+"',aforo='"+aforoEstadio+"', año_fundacion='"+fundacion+"', ciudad='"+ciudadEquipo+"' WHERE codigo='"+codeEquipo+"';");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }//GEN-LAST:event_actEquipoActionPerformed
+
+    private void insPartidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insPartidoActionPerformed
+        // TODO add your handling code here:
+        try {
+            int codePartido = Integer.parseInt(codigoPartido.getText());
+            int codeEquipoLocal = Integer.parseInt(codigoLocal.getText());
+            int codeEquipoVisitante = Integer.parseInt(codigoVisitante.getText());
+            String resultadoLocal = golesLocal.getValue().toString();
+            String resultadoVisitante = golesVisitante.getValue().toString();
+            String fechaPartido = añoPartido.getValue().toString() + "-" + mesPartido.getValue().toString() + "-" + diaPartido.getValue().toString();
+            cpa.insertarbuscareliminarj("INSERT INTO partidos(codigo, fecha_partido, goles_visitas, goles_casa, codigo_equipo, codigo_equipo2)VALUES('" + codePartido + "','" + fechaPartido + "','" + resultadoVisitante + "','" + resultadoLocal + "','" + codeEquipoLocal + "','" + codeEquipoVisitante + "');");
+        } catch (SQLException ex) {
+            Logger.getLogger(Insertar.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_insPartidoActionPerformed
+
+    private void actPartidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actPartidoActionPerformed
+        // TODO add your handling code here:
+        try {
+            int codePartido = Integer.parseInt(codigoPartido.getText());
+            int codeEquipoLocal = Integer.parseInt(codigoLocal.getText());
+            int codeEquipoVisitante = Integer.parseInt(codigoVisitante.getText());
+            String resultadoLocal = golesLocal.getValue().toString();
+            String resultadoVisitante = golesVisitante.getValue().toString();
+            String fechaPartido = añoPartido.getValue().toString() + "-" + mesPartido.getValue().toString() + "-" + diaPartido.getValue().toString();
+            cpa.insertarbuscareliminarj("UPDATE partidos SET fecha_partido='"+fechaPartido+"',goles_visitas='"+resultadoVisitante+"', goles_casa='"+resultadoLocal+"',codigo_equipo='"+codeEquipoLocal+"', codigo_equipo2='"+codeEquipoVisitante+"' WHERE codigo='"+codePartido+"';");
+        } catch (SQLException ex) {
+            Logger.getLogger(Insertar.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_actPartidoActionPerformed
+
+    private void insPresidenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insPresidenteActionPerformed
+        // TODO add your handling code here:
+        try {
+            String codePresidente = dni.getText();
+            String nombre = nombrePresidente.getText();
+            String apellidos = apellidosPresidente.getText();
+            String equipo = equipoPresidente.getText();
+            int codeEquipo = Integer.parseInt(codigoEquipoFk2.getText());
+            String presidencia = añoPresidencia.getValue().toString();
+            String fechaNacimiento = añoPartido.getValue().toString() + "-" + mesPartido.getValue().toString() + "-" + diaPartido.getValue().toString();
+            cpr.insertarbuscareliminarj("INSERT INTO presidentes(dni, nombre, apellidos, fecha_nacimiento, equipo_presidente,año_presidente,codigo_equipo)VALUES('" + codePresidente + "','" + nombre + "','" + apellidos + "','" + fechaNacimiento + "','" + equipo + "','" + presidencia + "','" + codeEquipo + "');");
+        } catch (SQLException ex) {
+            Logger.getLogger(Insertar.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_insPresidenteActionPerformed
+
+    private void actPresidenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actPresidenteActionPerformed
+        // TODO add your handling code here:
+        try {
+            String codePresidente = dni.getText();
+            String nombre = nombrePresidente.getText();
+            String apellidos = apellidosPresidente.getText();
+            String equipo = equipoPresidente.getText();
+            int codeEquipo = Integer.parseInt(codigoEquipoFk2.getText());
+            String presidencia = añoPresidencia.getValue().toString();
+            String fechaNacimiento = añoNacPresi.getValue().toString() + "-" + mesNacPresi.getValue().toString() + "-" + diaNacPresi.getValue().toString();
+            cpr.insertarbuscareliminarj("UPDATE presidentes SET nombre='"+nombre+"', apellidos='"+apellidos+"',fecha_nacimiento='"+fechaNacimiento+"', equipo_presidente='"+equipo+"',año_presidente='"+presidencia+"',codigo_equipo='"+codeEquipo+"' WHERE dni='"+codePresidente+"';");
+        } catch (SQLException ex) {
+            Logger.getLogger(Insertar.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_actPresidenteActionPerformed
+
+    private void insGolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insGolActionPerformed
+        // TODO add your handling code here:
+        try {
+            int codePartido = Integer.parseInt(codigoPartidoFk.getText());
+            String descripcionGol = descripcion.getText();
+            String minutoGol = minuto.getValue().toString();
+            cg.insertarbuscareliminarj("INSERT INTO goles(momento_gol, descripcion_gol, codigo_partido) VALUES ('" + minutoGol + "','" + descripcionGol + "','" + codePartido + "');");
+        } catch (SQLException ex) {
+            Logger.getLogger(Insertar.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_insGolActionPerformed
+
+    private void actGolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actGolActionPerformed
+        // TODO add your handling code here:
+        try {
+            int codePartido = Integer.parseInt(codigoPartidoFk.getText());
+            String descripcionGol = descripcion.getText();
+            String minutoGol = minuto.getValue().toString();
+            cg.insertarbuscareliminarj("UPDATE goles SET descripcion_gol='"+descripcionGol+"', codigo_partido='"+codePartido+"' WHERE momento_gol='"+minutoGol+"';");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }//GEN-LAST:event_actGolActionPerformed
 
     /**
      * @param args the command line arguments
@@ -394,13 +555,16 @@ public class Insertar extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Insertar().setVisible(true);
+                try {
+                    new Insertar().setVisible(true);
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField CodigoEquipoFk2;
     private javax.swing.JButton actEquipo;
     private javax.swing.JButton actGol;
     private javax.swing.JButton actJugador;
@@ -410,11 +574,12 @@ public class Insertar extends javax.swing.JFrame {
     private javax.swing.JTextField apellidosPresidente;
     private javax.swing.JSpinner añoFund;
     private javax.swing.JSpinner añoNacJug;
+    private javax.swing.JSpinner añoNacPresi;
     private javax.swing.JSpinner añoPartido;
-    private javax.swing.JSpinner añoPartido1;
     private javax.swing.JSpinner añoPresidencia;
     private javax.swing.JTextField ciudad;
     private javax.swing.JTextField codigoEquipoFk;
+    private javax.swing.JTextField codigoEquipoFk2;
     private javax.swing.JTextField codigoEquipoPk;
     private javax.swing.JTextField codigoGol;
     private javax.swing.JTextField codigoJugador;
@@ -424,8 +589,8 @@ public class Insertar extends javax.swing.JFrame {
     private javax.swing.JTextField codigoVisitante;
     private javax.swing.JTextArea descripcion;
     private javax.swing.JSpinner diaNacJug;
+    private javax.swing.JSpinner diaNacPresi;
     private javax.swing.JSpinner diaPartido;
-    private javax.swing.JSpinner diaPartido1;
     private javax.swing.JTextField dni;
     private javax.swing.JTextField equipoPresidente;
     private javax.swing.JTextField estadio;
@@ -440,13 +605,10 @@ public class Insertar extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
@@ -454,26 +616,19 @@ public class Insertar extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
-    private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
-    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
-    private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel46;
-    private javax.swing.JLabel jLabel47;
-    private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel49;
-    private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
@@ -481,8 +636,8 @@ public class Insertar extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSpinner mesNacJug;
+    private javax.swing.JSpinner mesNacPresi;
     private javax.swing.JSpinner mesPartido;
-    private javax.swing.JSpinner mesPartido1;
     private javax.swing.JSpinner minuto;
     private javax.swing.JTextField nombreEquipo;
     private javax.swing.JTextField nombreJugador;

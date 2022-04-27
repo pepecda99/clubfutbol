@@ -139,7 +139,11 @@ public class Vista extends javax.swing.JFrame {
     }//GEN-LAST:event_jEliminarActionPerformed
 
     private void jInsertaryactualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jInsertaryactualizarActionPerformed
-        i=new Insertar();
+        try {
+            i=new Insertar();
+        } catch (SQLException ex) {
+            Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
+        }
         i.setVisible(true);
     }//GEN-LAST:event_jInsertaryactualizarActionPerformed
 
