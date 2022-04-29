@@ -13,13 +13,25 @@ public class Gol {
    private int momento_del_gol;
    private String Descripcion_del_gol;
    private Partido p;
-
+   private int codigo_partido;
     public Gol(int momento_del_gol, String Descripcion_del_gol, int codigo_partido) {
         this.momento_del_gol = momento_del_gol;
         this.Descripcion_del_gol = Descripcion_del_gol;
-        codigo_partido=p.getCodigo_del_partido();
+        this.codigo_partido=p.getCodigo_del_partido();
     }
 
+    public Gol() {
+        
+    }
+
+    public int getCodigo_partido() {
+        return codigo_partido;
+    }
+
+    public void setCodigo_partido(int codigo_partido) {
+        this.codigo_partido = codigo_partido;
+    }
+    
    
    public int getMomento_del_gol() {
         return momento_del_gol;

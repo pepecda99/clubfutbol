@@ -13,15 +13,17 @@ import java.sql.Date;
  * @author MEDAC
  */
 public class Presidente {
-   private int Dni;
+   private String Dni;
    private String nombre;
    private String apellidos;
    private Date fecha_nacimiento;
    private String equipo_del_que_es_presidente;
    private int año_de_presidente;
+   private int codigo_equipo;
    private Equipo e;
 
-    public Presidente(int Dni, String nombre, String apellidos, Date fecha_nacimiento, String equipo_del_que_es_presidente, int año_de_presidente,int codigoequipo) {
+
+    public Presidente(String Dni, String nombre, String apellidos, Date fecha_nacimiento, String equipo_del_que_es_presidente, int año_de_presidente,int codigoequipo) {
         this.Dni = Dni;
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -29,9 +31,21 @@ public class Presidente {
         this.equipo_del_que_es_presidente = equipo_del_que_es_presidente;
         this.año_de_presidente = año_de_presidente;
         codigoequipo=e.getCodigo_equipo();
+
+    }
+    public Presidente(){
+        
     }
 
-    public int getDni() {
+    public int getCodigo_equipo() {
+        return codigo_equipo;
+    }
+
+    public void setCodigo_equipo(int codigo_equipo) {
+        this.codigo_equipo = codigo_equipo;
+    }
+
+    public String getDni() {
         return Dni;
     }
 
@@ -55,7 +69,7 @@ public class Presidente {
         return año_de_presidente;
     }
 
-    public void setDni(int Dni) {
+    public void setDni(String Dni) {
         this.Dni = Dni;
     }
 
@@ -83,6 +97,7 @@ public class Presidente {
     public String toString() {
         return "Presidente{" + "Dni=" + Dni + ", nombre=" + nombre + ", apellidos=" + apellidos + ", fecha_nacimiento=" + fecha_nacimiento + ", equipo_del_que_es_presidente=" + equipo_del_que_es_presidente + ", a\u00f1o_de_presidente=" + año_de_presidente + '}';
     }
+
    
    
 

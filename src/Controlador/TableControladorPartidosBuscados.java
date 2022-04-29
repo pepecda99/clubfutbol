@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package Controlador;
+
+
 import Modelo.Conexion;
 import Modelo.Consultas;
 import Modelo.Partido;
@@ -15,12 +17,13 @@ import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.AbstractTableModel;
+
 /**
  *
- * @author MEDAC
+ * @author 34684
  */
-public class TableControlador extends AbstractTableModel {
-    private static final String[] columnNames = {"Equipo local", "Goles Local", "Goles Visitante","Equipo Visitante","Fecha","Codigo partido"};
+public class TableControladorPartidosBuscados extends AbstractTableModel {
+ private static final String[] columnNames = {"Equipo local", "Goles Local", "Goles Visitante","Equipo Visitante"};
     private final LinkedList<Partido> list;
     private final ControladorPartido conp;
     private int codigoequipo1;
@@ -30,6 +33,7 @@ public class TableControlador extends AbstractTableModel {
     private int golesvisita;
     private int codigopartido;
     private Consultas cons=new Consultas();
+    
     public int getCodigoequipo1() {
         return codigoequipo1;
     }
@@ -78,7 +82,7 @@ public class TableControlador extends AbstractTableModel {
         this.codigopartido = codigopartido;
     }
     
-    public TableControlador() throws SQLException {
+    public TableControladorPartidosBuscados() throws SQLException {
         list = new LinkedList<>();
         Conexion.getConexion();
         conp= new ControladorPartido();
@@ -86,9 +90,9 @@ public class TableControlador extends AbstractTableModel {
     public Partido getValueAt(int rowIndex) {
         return list.get(rowIndex);
     }
-    public void cargarPartido() throws SQLException {
+    public void cargarPartido(int d, int m, int a) throws SQLException {
         // Obtiene la lista de peliculas de la BD
-        ArrayList<Partido> partido = conp.sacarPartido();
+        ArrayList<Partido> partido = conp.sacarPartidob( d, m ,  a);
         System.out.println(partido.size());
         // Borra el contenido anterior y añade el nuevo.
         list.clear();
@@ -97,31 +101,13 @@ public class TableControlador extends AbstractTableModel {
         fireTableDataChanged();
     }
 
-    public void insertar(String titulo, int año, int puntuacion, String sinopsis) 
-throws SQLException {
-        /*** COMPLETAR CÓDIGO ***/
-        cargarPartido();
-    }
-    public void eliminar(String titulo) throws SQLException {
-        /*** COMPLETAR CÓDIGO ***/
-        cargarPartido();
-    }
-    public int actualizar(String tituloOriginal, String titulo, int año, int 
-puntuacion, String sinopsis) throws SQLException {
-        int nfilas =0;
-        /*** COMPLETAR CÓDIGO ***/
-        cargarPartido();
-        return nfilas;
-    }
-    @Override
+
     public int getColumnCount() {
         return columnNames.length;
     }
-    @Override
     public String getColumnName(int column) {
         return columnNames[column];
     }
-    @Override
     public int getRowCount() {
         return list.size();
     }
@@ -147,7 +133,6 @@ puntuacion, String sinopsis) throws SQLException {
         System.out.println(nombre);
         return nombre;
     }
-    @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         switch (columnIndex) {
             case 0:
@@ -175,11 +160,9 @@ puntuacion, String sinopsis) throws SQLException {
             } catch (SQLException ex) {
                 Logger.getLogger(TableControlador.class.getName()).log(Level.SEVERE, null, ex);
             }
-            case 4:
-                return list.get(rowIndex).getFecha_del_partido();
-            case 5:
-                return list.get(rowIndex).getCodigo_del_partido();
+                       
         }
         return null;
     }
 }
+

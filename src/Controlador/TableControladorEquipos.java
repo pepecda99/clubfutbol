@@ -1,11 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Controlador;
 import Modelo.Conexion;
 import Modelo.Consultas;
+import Modelo.Equipo;
 import Modelo.Partido;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -19,17 +15,24 @@ import javax.swing.table.AbstractTableModel;
  *
  * @author MEDAC
  */
-public class TableControlador extends AbstractTableModel {
-    private static final String[] columnNames = {"Equipo local", "Goles Local", "Goles Visitante","Equipo Visitante","Fecha","Codigo partido"};
-    private final LinkedList<Partido> list;
-    private final ControladorPartido conp;
+public class TableControladorEquipos extends AbstractTableModel {
+    private static final String[] columnNames = {"Codigo", "Nombre", "Estadio","Aforo","Ciudad"};
+    private LinkedList<Equipo> list;
+    private ControladorEquipo cone;
     private int codigoequipo1;
     private String fechapartido;
     private int codigoequipo2;
     private int golescasa;
     private int golesvisita;
     private int codigopartido;
-    private Consultas cons=new Consultas();
+    private Consultas cons;
+
+    public TableControladorEquipos() throws SQLException {
+        this.cons = new Consultas();
+        list = new LinkedList<>();
+        Conexion.getConexion();
+        cone= new ControladorEquipo();
+    }
     public int getCodigoequipo1() {
         return codigoequipo1;
     }
@@ -78,39 +81,34 @@ public class TableControlador extends AbstractTableModel {
         this.codigopartido = codigopartido;
     }
     
-    public TableControlador() throws SQLException {
-        list = new LinkedList<>();
-        Conexion.getConexion();
-        conp= new ControladorPartido();
-    }
-    public Partido getValueAt(int rowIndex) {
+
+    public Equipo getValueAt(int rowIndex) {
         return list.get(rowIndex);
     }
-    public void cargarPartido() throws SQLException {
+    public void cargarEquipo() throws SQLException {
         // Obtiene la lista de peliculas de la BD
-        ArrayList<Partido> partido = conp.sacarPartido();
-        System.out.println(partido.size());
+        ArrayList<Equipo> equipo = cone.sacarEquipo();
+        
         // Borra el contenido anterior y añade el nuevo.
         list.clear();
-        list.addAll(partido);
+        list.addAll(equipo);
         // Notifica a la vista que el contenido ha cambiado para que se refresque.
         fireTableDataChanged();
     }
-
     public void insertar(String titulo, int año, int puntuacion, String sinopsis) 
 throws SQLException {
         /*** COMPLETAR CÓDIGO ***/
-        cargarPartido();
+        cargarEquipo();
     }
     public void eliminar(String titulo) throws SQLException {
         /*** COMPLETAR CÓDIGO ***/
-        cargarPartido();
+        cargarEquipo();
     }
     public int actualizar(String tituloOriginal, String titulo, int año, int 
 puntuacion, String sinopsis) throws SQLException {
         int nfilas =0;
         /*** COMPLETAR CÓDIGO ***/
-        cargarPartido();
+        cargarEquipo();
         return nfilas;
     }
     @Override
@@ -151,34 +149,16 @@ puntuacion, String sinopsis) throws SQLException {
     public Object getValueAt(int rowIndex, int columnIndex) {
         switch (columnIndex) {
             case 0:
-                int codigo=list.get(rowIndex).getCodigo_equipo1();
-                System.out.println(codigo);
-                String Consulta="Select nombre_equipo from equipo where codigo='"+codigo+"';";
-                System.out.println(Consulta + "esto");
-            try {
-                return this.sacarPartido(Consulta);
-            } catch (SQLException ex) {
-                Logger.getLogger(TableControlador.class.getName()).log(Level.SEVERE, null, ex);
-            }
+                return list.get(rowIndex).getCodigo_equipo();
                        
             case 1:
-                return list.get(rowIndex).getGoles_en_casa();
+                return list.get(rowIndex).getNombre_Equipo();
             case 2:
-                return list.get(rowIndex).getGoloes_visita();
+                return list.get(rowIndex).getNombre_EStadio();
             case 3:
-                int codigo1=list.get(rowIndex).getCodigo_equipo2();
-                System.out.println(codigo1);
-                String Consulta1="Select nombre_equipo from equipo where codigo='"+codigo1+"';";
-                System.out.println(Consulta1 + "esto");
-            try {
-                return this.sacarPartido(Consulta1);
-            } catch (SQLException ex) {
-                Logger.getLogger(TableControlador.class.getName()).log(Level.SEVERE, null, ex);
-            }
+                return list.get(rowIndex).getAforo();
             case 4:
-                return list.get(rowIndex).getFecha_del_partido();
-            case 5:
-                return list.get(rowIndex).getCodigo_del_partido();
+                return list.get(rowIndex).getCiudad();
         }
         return null;
     }

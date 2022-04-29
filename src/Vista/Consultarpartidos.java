@@ -6,11 +6,24 @@
 package Vista;
 
 import Controlador.TableControlador;
+import Controlador.TableControlador2;
+import Controlador.TableControlador3;
+import Controlador.TableControladorEquipos;
+import Controlador.TableControladorGoles;
+import Controlador.TableControladorPartidosBuscados;
+import Modelo.Partido;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.JPopupMenu;
+import javax.swing.JSpinner;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -18,18 +31,44 @@ import javax.swing.ImageIcon;
  */
 public class Consultarpartidos extends javax.swing.JFrame {
     private TableControlador tb = new TableControlador();
+    private TableControladorEquipos tbe = new TableControladorEquipos();
+    private TableControlador2 tb2 = new TableControlador2();
+    private TableControlador3 tb3 = new TableControlador3();
+    private TableControladorPartidosBuscados tbb=new TableControladorPartidosBuscados();
+    private TableControladorGoles tbg= new TableControladorGoles();
+    InsEquipo inse = new InsEquipo();
+    InsPartido insp = new InsPartido();
+    InsJugador insj = new InsJugador();
+    InsPresidente inspre = new InsPresidente();
+    InsGol insgol = new InsGol();
+    Goles g;
+    int codigo;
+    Eliminar e = new Eliminar();
+    
     /**
      * Creates new form Consultarparidos
      */
     public Consultarpartidos() throws SQLException {
         initComponents();
-        tb.cargarPeliculas();
+        //this.refrescartabla();
         this.setLocationRelativeTo(null);
         Image icon = new ImageIcon(getClass().getResource("/Imagenes/icono.png")).getImage();
         setIconImage(icon);
         this.setTitle("Tabla Partidos");
+        this.nosetVisiblep();
     }
-
+    public void setVisiblep(){
+            jSdia.setVisible(true);
+            jSmes.setVisible(true);
+            jSaño.setVisible(true);
+            jBbuscar.setVisible(true);
+    }
+    public void nosetVisiblep(){
+        jSdia.setVisible(false);
+        jSmes.setVisible(false);
+        jSaño.setVisible(false);
+        jBbuscar.setVisible(false);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -39,51 +78,165 @@ public class Consultarpartidos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jSeparator1 = new javax.swing.JSeparator();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
+        jTable = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
+        jOpciones = new javax.swing.JComboBox<>();
+        jBbuscar = new javax.swing.JButton();
+        jSaño = new javax.swing.JSpinner();
+        jSmes = new javax.swing.JSpinner();
+        jSdia = new javax.swing.JSpinner();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMinsertar = new javax.swing.JMenuItem();
+        jInsertarJugador = new javax.swing.JMenuItem();
+        jInsertarPresidente = new javax.swing.JMenuItem();
+        jMpartido = new javax.swing.JMenuItem();
+        jInsertarGol = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
-        jTable1.setModel(tb);
-        jScrollPane1.setViewportView(jTable1);
-
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 3, 48)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(204, 0, 0));
-        jLabel1.setText("Partidos de la Liga");
+        jTable.setModel(tb);
+        jScrollPane1.setViewportView(jTable);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cabecera.png"))); // NOI18N
+
+        jOpciones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1. Equipos", "2. Partidos", "3. Jugadores", "4. Presidentes" }));
+        jOpciones.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jOpcionesItemStateChanged(evt);
+            }
+        });
+        jOpciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jOpcionesActionPerformed(evt);
+            }
+        });
+
+        jBbuscar.setText("Buscar");
+        jBbuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBbuscarActionPerformed(evt);
+            }
+        });
+
+        jSaño.setModel(new javax.swing.SpinnerNumberModel(2022, 1990, 2300, 1));
+
+        jSmes.setModel(new javax.swing.SpinnerNumberModel(1, 1, 12, 1));
+
+        jSdia.setModel(new javax.swing.SpinnerNumberModel(1, 1, 31, 1));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(180, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(104, 104, 104)
+                .addGap(63, 63, 63)
+                .addComponent(jOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jSdia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jSmes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSaño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jBbuscar)
+                .addGap(61, 61, 61)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24))
+                .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 956, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(50, 50, 50)
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
-                .addGap(30, 30, 30)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 451, Short.MAX_VALUE))
+                    .addComponent(jLabel2)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jBbuscar)
+                        .addComponent(jSaño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jSmes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jSdia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(67, 67, 67)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE))
         );
+
+        jMenu1.setText("Insertar o actualizar");
+
+        jMinsertar.setText("Equipo");
+        jMinsertar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMinsertarActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMinsertar);
+
+        jInsertarJugador.setText("Jugador");
+        jInsertarJugador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jInsertarJugadorActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jInsertarJugador);
+
+        jInsertarPresidente.setText("Presidente");
+        jInsertarPresidente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jInsertarPresidenteActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jInsertarPresidente);
+
+        jMpartido.setText("Partido");
+        jMpartido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMpartidoActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMpartido);
+
+        jInsertarGol.setText("Goles");
+        jInsertarGol.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jInsertarGolActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jInsertarGol);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Editar ");
+
+        jMenuItem1.setText("Eliminar");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -93,6 +246,139 @@ public class Consultarpartidos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jOpcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jOpcionesActionPerformed
+       
+        
+    }//GEN-LAST:event_jOpcionesActionPerformed
+
+    private void jInsertarGolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jInsertarGolActionPerformed
+        insgol.setVisible(true);
+    }//GEN-LAST:event_jInsertarGolActionPerformed
+
+    private void jOpcionesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jOpcionesItemStateChanged
+      
+        try {
+            this.refrescartabla();
+        } catch (SQLException ex) {
+            Logger.getLogger(Consultarpartidos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jOpcionesItemStateChanged
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        try {
+            this.refrescartabla();
+        } catch (SQLException ex) {
+            Logger.getLogger(Consultarpartidos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_formWindowOpened
+
+    private void jBbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBbuscarActionPerformed
+           //Sacar partidos por fecha
+           jTable.setModel(tbb);
+           try{
+               int d=(int) jSdia.getValue();
+               int m=(int) jSmes.getValue();
+               int a=(int) jSaño.getValue();
+               tbb.cargarPartido(d,m,a);
+               if (tbb.getRowCount()==0){
+                   JOptionPane.showMessageDialog(null, "No se han encotrado registros");
+               }else{
+                   JOptionPane.showMessageDialog(null,"Se han encontrado los siguientes registros");
+               }
+            }catch(SQLException e){
+               System.out.println(e);
+                }
+           
+    }//GEN-LAST:event_jBbuscarActionPerformed
+
+    private void jMinsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMinsertarActionPerformed
+               inse.setVisible(true);
+    }//GEN-LAST:event_jMinsertarActionPerformed
+
+    private void jMpartidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMpartidoActionPerformed
+              insp.setVisible(true);
+    }//GEN-LAST:event_jMpartidoActionPerformed
+
+    private void jInsertarJugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jInsertarJugadorActionPerformed
+        insj.setVisible(true);  
+    }//GEN-LAST:event_jInsertarJugadorActionPerformed
+
+    private void jInsertarPresidenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jInsertarPresidenteActionPerformed
+        inspre.setVisible(true);
+    }//GEN-LAST:event_jInsertarPresidenteActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+            e.setVisible(true);
+            // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    private void refrescartabla() throws SQLException{
+         if (jOpciones.getSelectedItem()=="2. Partidos"){
+            this.setVisiblep();
+            jTable.setModel(tb);
+            this.popupTable();
+            try {
+                tb.cargarPartido();
+            } catch (SQLException ex) {
+                Logger.getLogger(Consultarpartidos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            }else if(jOpciones.getSelectedItem()=="1. Equipos"){
+                this.nosetVisiblep();
+                jTable.setModel(tbe);
+            try {
+                tbe.cargarEquipo();
+            } catch (SQLException ex) {
+                Logger.getLogger(Consultarpartidos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            }else if (jOpciones.getSelectedItem()=="3. Jugadores"){
+                this.nosetVisiblep();
+                jTable.setModel(tb2);
+            try {
+                tb2.cargarJugador();
+            } catch (SQLException ex) {
+                Logger.getLogger(Consultarpartidos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            }else if (jOpciones.getSelectedItem()=="4. Presidentes"){
+                this.nosetVisiblep();
+                jTable.setModel(tb3);
+            try {
+                tb3.cargarPresidente();
+            } catch (SQLException ex) {
+                Logger.getLogger(Consultarpartidos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            }else if (jOpciones.getSelectedItem()=="5. Goles"){
+                this.nosetVisiblep();
+            }
+    }
+    public void popupTable() throws SQLException{
+        JPopupMenu opciones = new JPopupMenu();
+        JMenuItem Goles = new JMenuItem("Ver Goles");
+        Goles.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent ae) { 
+              Partido p = tb.getValueAt(jTable.getSelectedRow());
+              codigo=p.getCodigo_del_partido();
+              try {
+                    g=new Goles(codigo);
+                    g.setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Consultarpartidos.class.getName()).log(Level.SEVERE, null, ex);
+                }
+               
+                
+                
+            }    
+
+            
+        });
+       opciones.add(Goles);
+       
+       this.jTable.setComponentPopupMenu(opciones);
+       
+{
+        
+    };
+    }
     /**
      * @param args the command line arguments
      */
@@ -134,10 +420,24 @@ public class Consultarpartidos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton jBbuscar;
+    private javax.swing.JMenuItem jInsertarGol;
+    private javax.swing.JMenuItem jInsertarJugador;
+    private javax.swing.JMenuItem jInsertarPresidente;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMinsertar;
+    private javax.swing.JMenuItem jMpartido;
+    private javax.swing.JComboBox<String> jOpciones;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JSpinner jSaño;
     public javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JSpinner jSdia;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSpinner jSmes;
+    private javax.swing.JTable jTable;
     // End of variables declaration//GEN-END:variables
 }

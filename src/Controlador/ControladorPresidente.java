@@ -7,7 +7,11 @@ package Controlador;
 
 import Modelo.Conexion;
 import Modelo.Consultas;
+import Modelo.Presidente;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 
 /**
  *
@@ -15,6 +19,7 @@ import java.sql.SQLException;
  */
 public class ControladorPresidente {
     Consultas cons;
+    ArrayList presidente=new ArrayList();
    public ControladorPresidente() throws SQLException{
        cons= new Consultas();
    }
@@ -27,5 +32,35 @@ public class ControladorPresidente {
         }finally{
             Conexion.desconectar();
         }
+}
+
+    public ArrayList<Presidente> sacarPresidente() {
+        try{
+            Conexion.getConexion();
+            presidente.clear();
+            Statement st = Conexion.createdStatement();
+            ResultSet rs = st.executeQuery("SELECT * FROM presidentes;");
+            while(rs.next()){
+                Presidente p = new Presidente();
+                p.setDni(rs.getString("dni"));
+                p.setNombre(rs.getString("nombre"));
+                p.setApellidos(rs.getString("apellidos"));
+                p.setFecha_nacimiento(rs.getDate("fecha_nacimiento"));
+                p.setEquipo_del_que_es_presidente(rs.getString("equipo_presidente"));
+                p.setAño_de_presidente(rs.getInt("año_presidente"));
+                p.setCodigo_equipo(rs.getInt("codigo_equipo"));
+               
+                presidente.add(p);
+                
+            }
+           
+  
+            
+    }catch(SQLException e){
+        
+    }finally{
+        Conexion.desconectar();
+        return presidente;
+    }
 }
 }

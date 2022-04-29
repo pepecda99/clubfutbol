@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -25,6 +26,7 @@ public class Eliminar extends javax.swing.JFrame {
         Image icon = new ImageIcon(getClass().getResource("/Imagenes/icono.png")).getImage();
         setIconImage(icon);
         this.setTitle("Editar");
+        
     }
 
     /**
@@ -214,6 +216,10 @@ public class Eliminar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void B_Eliminar_JugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_Eliminar_JugadorActionPerformed
+        if(T_Insertar_Jugador.getText().length()==0){
+            JOptionPane.showMessageDialog(null,"Los campos estan vacios");
+        }else{  
+        
         try {
             String codigo= T_Insertar_Jugador.getText();
             contj.insertarbuscareliminarj("DELETE FROM jugador WHERE jugador.codigo = "+codigo+";");
@@ -221,6 +227,9 @@ public class Eliminar extends javax.swing.JFrame {
             Logger.getLogger(Eliminar.class.getName()).log(Level.SEVERE, null, ex);
         }
         T_Insertar_Jugador.setText(" ");
+        JOptionPane.showMessageDialog(null,"Se ha realizado con exito");
+        }
+       
     }//GEN-LAST:event_B_Eliminar_JugadorActionPerformed
 
     private void B_Eliminar_PartidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_Eliminar_PartidoActionPerformed
