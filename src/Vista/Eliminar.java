@@ -219,72 +219,124 @@ public class Eliminar extends javax.swing.JFrame {
         if(T_Insertar_Jugador.getText().length()==0){
             JOptionPane.showMessageDialog(null,"Los campos estan vacios");
         }else{  
-        
-        try {
-            String codigo= T_Insertar_Jugador.getText();
-            contj.insertarbuscareliminarj("DELETE FROM jugador WHERE jugador.codigo = "+codigo+";");
+        try {  
+            Consultarpartidos consp = new Consultarpartidos();
+            try {
+                
+                String codigo= T_Insertar_Jugador.getText();
+                contj.insertarbuscareliminarj("DELETE FROM jugador WHERE jugador.codigo = "+codigo+";");
+            } catch (SQLException ex) {
+                Logger.getLogger(Eliminar.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            T_Insertar_Jugador.setText(" ");
+            this.setVisible(false);
+            JOptionPane.showMessageDialog(null,"Se ha realizado con exito");
+            consp.setVisible(true);
         } catch (SQLException ex) {
             Logger.getLogger(Eliminar.class.getName()).log(Level.SEVERE, null, ex);
         }
-        T_Insertar_Jugador.setText(" ");
-        JOptionPane.showMessageDialog(null,"Se ha realizado con exito");
         }
        
     }//GEN-LAST:event_B_Eliminar_JugadorActionPerformed
 
     private void B_Eliminar_PartidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_Eliminar_PartidoActionPerformed
-        
+        if(T_Insertar_Partido.getText().length()==0){
+            JOptionPane.showMessageDialog(null,"Los campos estan vacios");
+        }else{
         try {
-            String codigoPartido = T_Insertar_Partido.getText();
-            contj.insertarbuscareliminarj("DELETE FROM partidos WHERE partidos.codigo = "+codigoPartido+";");
+            Consultarpartidos consp = new Consultarpartidos();
+            try {
+                
+                String codigoPartido = T_Insertar_Partido.getText();
+                contj.insertarbuscareliminarj("DELETE FROM partidos WHERE partidos.codigo = "+codigoPartido+";");
+            } catch (SQLException ex) {
+                Logger.getLogger(Eliminar.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            T_Insertar_Partido.setText(" ");
+            this.setVisible(false);
+            JOptionPane.showMessageDialog(null,"Se ha realizado con exito");
+            consp.setVisible(true);
         } catch (SQLException ex) {
            Logger.getLogger(Eliminar.class.getName()).log(Level.SEVERE, null, ex);
         }
-        T_Insertar_Partido.setText(" ");
-
+        }
     }//GEN-LAST:event_B_Eliminar_PartidoActionPerformed
 
     private void B_Eliminar_PresidenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_Eliminar_PresidenteActionPerformed
-   try {
-            String dni = T_Insertar_Presidente.getText();
-            contj.insertarbuscareliminarj("DELETE FROM presidentes WHERE dni='"+dni+"';");
+        if(T_Insertar_Presidente.getText().length()==0){
+            JOptionPane.showMessageDialog(null,"Los campos estan vacios");
+        }else{
+        try {
+            Consultarpartidos consp = new Consultarpartidos();
+            try {
+                
+                String dni = T_Insertar_Presidente.getText();
+                contj.insertarbuscareliminarj("DELETE FROM presidentes WHERE dni='"+dni+"';");
+            } catch (SQLException ex) {
+                Logger.getLogger(Eliminar.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            T_Insertar_Presidente.setText(" ");
+            this.setVisible(false);
+            JOptionPane.showMessageDialog(null,"Se ha realizado con exito");
+            consp.setVisible(true);
         } catch (SQLException ex) {
            Logger.getLogger(Eliminar.class.getName()).log(Level.SEVERE, null, ex);
         }
-        T_Insertar_Presidente.setText(" ");
-
-
+        }
     }//GEN-LAST:event_B_Eliminar_PresidenteActionPerformed
 
     private void B_Eliminar_GolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_Eliminar_GolActionPerformed
-        
-        
+            if(T_Insertar_Gol.getText().length()==0){
+                JOptionPane.showMessageDialog(null,"Los campos estan vacios");
+            }else{
+                 
            try {
-            String codigoGol = T_Insertar_Gol.getText();
-            String codigoPartido=T_Insertar_Codigo_partido.getText();
-            contj.insertarbuscareliminarj("DELETE FROM goles where goles.momento_gol="+codigoGol+" and goles.codigo_partido="+codigoPartido+";");
-        } catch (SQLException ex) {
+               
+               Consultarpartidos consp = new Consultarpartidos();
+               try {
+                   
+                   String codigoGol = T_Insertar_Gol.getText();
+                   String codigoPartido=T_Insertar_Codigo_partido.getText();
+                   contj.insertarbuscareliminarj("DELETE FROM goles where goles.momento_gol="+codigoGol+" and goles.codigo_partido="+codigoPartido+";");
+               } catch (SQLException ex) {
+                   Logger.getLogger(Eliminar.class.getName()).log(Level.SEVERE, null, ex);
+               }
+               T_Insertar_Gol.setText(" ");
+               this.setVisible(false);
+               JOptionPane.showMessageDialog(null,"Se ha realizado con exito");
+               consp.setVisible(true);
+           } catch (SQLException ex) {
            Logger.getLogger(Eliminar.class.getName()).log(Level.SEVERE, null, ex);
         }
-        T_Insertar_Gol.setText(" ");
-        
+        }
 
         
         
     }//GEN-LAST:event_B_Eliminar_GolActionPerformed
 
     private void B_Eliminar_Equipo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_Eliminar_Equipo1ActionPerformed
-
         
+        if(T_Insertar_Equipo.getText().length()==0){
+                JOptionPane.showMessageDialog(null,"Los campos estan vacios");
+            }else{
            try {
-            String codigoEquipo = T_Insertar_Equipo.getText();
-            contj.insertarbuscareliminarj("DELETE FROM equipo WHERE equipo.codigo = " +codigoEquipo+";");
-        } catch (SQLException ex) {
+               Consultarpartidos consp = new Consultarpartidos();
+               try {
+                   
+                   String codigoEquipo = T_Insertar_Equipo.getText();
+                   contj.insertarbuscareliminarj("DELETE FROM equipo WHERE equipo.codigo = " +codigoEquipo+";");
+               } catch (SQLException ex) {
+                   Logger.getLogger(Eliminar.class.getName()).log(Level.SEVERE, null, ex);
+               }
+               T_Insertar_Equipo.setText(" ");
+               this.setVisible(false);
+               JOptionPane.showMessageDialog(null,"Se ha realizado con exito");
+               consp.setVisible(true);
+           } catch (SQLException ex) {
            Logger.getLogger(Eliminar.class.getName()).log(Level.SEVERE, null, ex);
         }
-        T_Insertar_Equipo.setText(" ");
         
-
+            }
     }//GEN-LAST:event_B_Eliminar_Equipo1ActionPerformed
 
     /**

@@ -292,23 +292,29 @@ public class Consultarpartidos extends javax.swing.JFrame {
     }//GEN-LAST:event_jBbuscarActionPerformed
 
     private void jMinsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMinsertarActionPerformed
-               inse.setVisible(true);
+        
+        inse.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jMinsertarActionPerformed
 
     private void jMpartidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMpartidoActionPerformed
               insp.setVisible(true);
+              this.setVisible(false);
     }//GEN-LAST:event_jMpartidoActionPerformed
 
     private void jInsertarJugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jInsertarJugadorActionPerformed
-        insj.setVisible(true);  
+        insj.setVisible(true); 
+        this.setVisible(false);
     }//GEN-LAST:event_jInsertarJugadorActionPerformed
 
     private void jInsertarPresidenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jInsertarPresidenteActionPerformed
         inspre.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jInsertarPresidenteActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
             e.setVisible(true);
+            this.setVisible(false);
             // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem1ActionPerformed
     private void refrescartabla() throws SQLException{

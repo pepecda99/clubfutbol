@@ -127,6 +127,7 @@ public class InsPartido extends javax.swing.JFrame {
                 
             }
             else{
+                Consultarpartidos consp = new Consultarpartidos();
                 int codePartido = Integer.parseInt(codigoPartido.getText());
                 int codeEquipoLocal = Integer.parseInt(codigoLocal.getText());
                 int codeEquipoVisitante = Integer.parseInt(codigoVisitante.getText());
@@ -138,7 +139,14 @@ public class InsPartido extends javax.swing.JFrame {
                 codigoLocal.setText("");
                 codigoVisitante.setText("");      
                 codigoPartido.setText("");
-                tb.cargarPartido();
+                consp.setVisible(true);
+                try{
+                    tb.cargarPartido();
+                }catch(Exception e){
+                    System.out.println(e);
+                }
+                
+                this.setVisible(false);
             
             }
             } catch (SQLException ex) {
@@ -154,6 +162,7 @@ public class InsPartido extends javax.swing.JFrame {
                 
             }
             else{
+            Consultarpartidos consp = new Consultarpartidos();
             int codePartido = Integer.parseInt(codigoPartido.getText());
             int codeEquipoLocal = Integer.parseInt(codigoLocal.getText());
             int codeEquipoVisitante = Integer.parseInt(codigoVisitante.getText());
@@ -165,7 +174,15 @@ public class InsPartido extends javax.swing.JFrame {
             codigoLocal.setText("");
             codigoVisitante.setText("");      
             codigoPartido.setText("");
-            tb.cargarPartido();
+            consp.setVisible(true);
+             try{
+                    tb.cargarPartido();
+                }catch(Exception e){
+                    System.out.println(e);
+                }
+                
+                this.setVisible(false);
+            
             }
         } catch (SQLException ex) {
             Logger.getLogger(InsPartido.class.getName()).log(Level.SEVERE, null, ex);

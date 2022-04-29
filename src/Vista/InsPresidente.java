@@ -133,6 +133,7 @@ public class InsPresidente extends javax.swing.JFrame {
              if((dni.getText().length()==0) ||(nombrePresidente.getText().length()==0) || (apellidosPresidente.getText().length()==0) || (codigoEquipoFk2.getText().length()==0) || (equipoPresidente.getText().length()==0)){
              JOptionPane.showMessageDialog(null,"No se han insertado los datos correctamente");
              }else{
+            Consultarpartidos consp = new Consultarpartidos();
             String codePresidente = dni.getText();
             String nombre = nombrePresidente.getText();
             String apellidos = apellidosPresidente.getText();
@@ -147,7 +148,14 @@ public class InsPresidente extends javax.swing.JFrame {
             apellidosPresidente.setText("");
             codigoEquipoFk2.setText("");
             equipoPresidente.setText("");
+            consp.setVisible(true);
+            try{
             tb3.cargarPresidente();
+             
+            }catch(Exception e){
+                System.out.println(e);
+            }
+            this.setVisible(false);
             }
             } catch (SQLException ex) {
             Logger.getLogger(InsPresidente.class.getName()).log(Level.SEVERE, null, ex);
@@ -159,6 +167,7 @@ public class InsPresidente extends javax.swing.JFrame {
              if((dni.getText().length()==0) ||(nombrePresidente.getText().length()==0) || (apellidosPresidente.getText().length()==0) || (codigoEquipoFk2.getText().length()==0) || (equipoPresidente.getText().length()==0)){
              JOptionPane.showMessageDialog(null,"No se han insertado los datos correctamente");
              }else{
+            Consultarpartidos consp = new Consultarpartidos();
             String codePresidente = dni.getText();
             String nombre = nombrePresidente.getText();
             String apellidos = apellidosPresidente.getText();
@@ -172,11 +181,16 @@ public class InsPresidente extends javax.swing.JFrame {
             nombrePresidente.setText("");
             apellidosPresidente.setText("");
             codigoEquipoFk2.setText("");
-            equipoPresidente.setText(""); 
+            equipoPresidente.setText("");
+            consp.setVisible(true);
+            try{
             tb3.cargarPresidente();
              
+            }catch(Exception e){
+                System.out.println(e);
             }
-             
+            this.setVisible(false);
+             } 
              } catch (SQLException ex) {
             Logger.getLogger(InsPresidente.class.getName()).log(Level.SEVERE, null, ex);
         }

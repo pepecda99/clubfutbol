@@ -107,10 +107,12 @@ public class InsGol extends javax.swing.JFrame {
     private void insGolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insGolActionPerformed
        
        try {
+           
             if((codigoGol.getText().length()==0)|| (codigoPartidoFk.getText().length()==0) || (descripcion.getText().length()==0)){
                 JOptionPane.showMessageDialog(null,"No se han insertado los datos correctamente");
             
             }else{
+            
             int codePartido = Integer.parseInt(codigoPartidoFk.getText());
             String descripcionGol = descripcion.getText();
             String minutoGol = minuto.getValue().toString();

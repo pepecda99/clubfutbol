@@ -120,6 +120,7 @@ public class InsJugador extends javax.swing.JFrame {
              JOptionPane.showMessageDialog(null,"No se han insertado los datos correctamente");
 
             }else{ 
+            Consultarpartidos consp = new Consultarpartidos();
             int codeJugador = Integer.parseInt(codigoJugador.getText());
             int codeEquipo = Integer.parseInt(codigoEquipoFk.getText());
             String nombre = nombreJugador.getText();
@@ -131,7 +132,15 @@ public class InsJugador extends javax.swing.JFrame {
             nombreJugador.setText("");
             posicionJugador.setText("");
             codigoEquipoFk.setText("");
-            Tb2.cargarJugador();
+            consp.setVisible(true);
+                try{
+                    Tb2.cargarJugador();
+                }catch(Exception e){
+                    System.out.println(e);
+                }
+                
+                this.setVisible(false);
+            
             
             }
         } catch (SQLException ex) {
@@ -147,12 +156,21 @@ public class InsJugador extends javax.swing.JFrame {
              JOptionPane.showMessageDialog(null,"No se han insertado los datos correctamente");
 
             }else{ 
+            Consultarpartidos consp = new Consultarpartidos();
             int codeJugador = Integer.parseInt(codigoJugador.getText());
             int codeEquipo = Integer.parseInt(codigoEquipoFk.getText());
             String nombre = nombreJugador.getText();
             String posicion = posicionJugador.getText();
             String fechaNacimiento = añoNacJug.getValue().toString() + "-" + mesNacJug.getValue().toString() + "-" + diaNacJug.getValue().toString();
             cj.insertarbuscareliminarj("UPDATE jugador SET nombre='"+nombre+"', fech_nacimiento='"+fechaNacimiento+"',posicion='"+posicion+"', codigo_equipo='"+codeEquipo+"' WHERE codigo='"+codeJugador+"';");
+            consp.setVisible(true);
+             try{
+                    Tb2.cargarJugador();
+                }catch(Exception e){
+                    System.out.println(e);
+                }
+                
+                this.setVisible(false);
             }
             } catch (SQLException ex) {
             System.out.println(ex.getMessage());

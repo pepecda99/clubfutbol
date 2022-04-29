@@ -21,7 +21,7 @@ import javax.swing.table.AbstractTableModel;
  * @author 34684
  */
 public class TableControladorGoles extends AbstractTableModel {
-  private static final String[] columnNames = {"Momento", "Descripción"};
+  private static final String[] columnNames = {"Minuto", "Descripción"};
     private LinkedList<Gol> list;
     private ControladorGol cong;
     private int codigoequipo1;

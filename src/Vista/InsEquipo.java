@@ -31,8 +31,8 @@ import static sun.nio.cs.Surrogate.is;
  */
 public class InsEquipo extends javax.swing.JFrame {
     ControladorEquipo ce;
-    TableControladorEquipos tbe = new TableControladorEquipos();
-   
+    TableControladorEquipos tbe;
+    //Consultarpartidos consp = new Consultarpartidos();
     /** Creates new form insertar */
     public InsEquipo() throws SQLException {
         initComponents();
@@ -41,6 +41,7 @@ public class InsEquipo extends javax.swing.JFrame {
         Image icon = new ImageIcon(getClass().getResource("/Imagenes/icono.png")).getImage();
         setIconImage(icon);
         this.setTitle("Insertar datos");
+        
         
         
     }
@@ -122,6 +123,7 @@ public class InsEquipo extends javax.swing.JFrame {
 
     private void insEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insEquipoActionPerformed
    try {
+              Consultarpartidos consp = new Consultarpartidos();
             
             if((codigoEquipoPk.getText().length()==0)|| (nombreEquipo.getText().length()==0) || (estadio.getText().length()==0) || (ciudad.getText().length()==0)){
                 JOptionPane.showMessageDialog(null,"No se han insertado los datos correctamente");
@@ -134,12 +136,21 @@ public class InsEquipo extends javax.swing.JFrame {
                 int aforoEstadio = (int) aforo.getValue();
                 int fundacion = (int) añoFund.getValue();
                 ce.insertarbuscareliminarj("INSERT INTO equipo(codigo, nombre_equipo, nombre_estadio, aforo, año_fundacion, ciudad)VALUES('" + codeEquipo + "','" + nombre + "','" + nombreEstadio + "','" + aforoEstadio + "','" + fundacion + "','" + ciudadEquipo + "');");
+                
                 JOptionPane.showMessageDialog(null, "Se ha insertado correctamente");
                 codigoEquipoPk.setText("");
                 nombreEquipo.setText("");
                 estadio.setText("");
                 ciudad.setText("");
-                tbe.cargarEquipo();
+                
+                consp.setVisible(true);
+                try{
+                    tbe.cargarEquipo();
+                }catch(Exception e){
+                    System.out.println(e);
+                }
+                
+                this.setVisible(false);
             }
             
             
@@ -150,6 +161,7 @@ public class InsEquipo extends javax.swing.JFrame {
 
     private void actEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actEquipoActionPerformed
        try {
+           Consultarpartidos consp = new Consultarpartidos();
             if((codigoEquipoPk.getText().length()==0)|| (nombreEquipo.getText().length()==0) || (estadio.getText().length()==0) || (ciudad.getText().length()==0)){
                 JOptionPane.showMessageDialog(null,"No se han insertado los datos correctamente");
             
@@ -166,7 +178,15 @@ public class InsEquipo extends javax.swing.JFrame {
             estadio.setText("");
             ciudad.setText("");
             JOptionPane.showMessageDialog(null, "Se ha Actualizado correctamente");
-            tbe.cargarEquipo();
+            consp.setVisible(true);
+                try{
+                    tbe.cargarEquipo();
+                }catch(Exception e){
+                    System.out.println(e);
+                }
+                
+                this.setVisible(false);
+            
             
             }
             } catch (SQLException ex) {
